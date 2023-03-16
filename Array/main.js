@@ -1,6 +1,8 @@
 ////////////////////////////////////////APUNTES
-import {countries} from "./countries"
-
+//ejercicio de import modules - en package.json agregamos type:modules / ver: https://flaviocopes.com/es-modules/
+import {countries} from './countries.js';
+import {webTechs} from './web_tech.js';
+//ver level 2 alli están los console.log(countries) - console.log(webTechs)
 
 //crear un array vacío
 const arr1 = []; //USAR ESTE MODO
@@ -205,6 +207,135 @@ console.log("remove all:", copyArr2.splice(0, copyArr2.length))
 console.log(copyArr2)
 
 ///////LEVEL2
+/*Create a separate countries.js file and store the countries array in to this file, 
+create a separate file web_techs.js and store the webTechs array in to this file. 
+Access both file in main.js file */
+console.log("import countries:", countries)
+console.log("import webTech:", webTechs)
+
+//remove all the punctuations and change the string to array and count the number of words in the array
+let text = 'I love teaching and empowering people. I teach HTML, CSS, JS, React, Python.'
+
+let wordArr = text.replace(/[^\w\s]/, '').split(' ');
+console.log(wordArr)
+console.log(wordArr.length)
+
+//In the following shopping cart add, remove, edit items
+/*add 'Meat' in the beginning, if it has not been already added
+add Sugar at the end of you shopping cart if it has not been already added
+remove 'Honey' if you are allergic to honey
+modify Tea to 'Green Tea' */
+const shoppingCart = ['Milk', 'Coffee', 'Tea', 'Honey']
+
+function newUnshiftItem(item){
+  if(shoppingCart.indexOf(item) === -1){
+    shoppingCart.unshift(item)
+    console.log(shoppingCart)
+  }else{
+    console.log("item already added")
+  }
+}
+
+newUnshiftItem("Meat")
+newUnshiftItem("Milk")
+
+function newPushItem(item){
+  if(shoppingCart.indexOf(item) === -1){
+    shoppingCart.push(item)
+    console.log(shoppingCart)
+  }else{
+    console.log("item already added")
+  }
+}
+
+newPushItem("Sugar")
+newPushItem("Milk")
+
+console.log("antes de la alergia:", shoppingCart)
+function allergicTo(something){
+  if(shoppingCart.includes(something) === true){
+    shoppingCart.splice(shoppingCart.indexOf("Honey"), 1)
+    console.log("después de la alergia:", "fue retirado " + something.toUpperCase() + " del carro")
+  } else {
+    console.log("All product are safe. There is no " + something.toUpperCase() + " in the cart")
+  }
+} 
+
+allergicTo("Honey")
+allergicTo("Chocolate")
+
+function modifyItem(item, newItem){
+  if(shoppingCart.includes(item) === true){
+    shoppingCart[shoppingCart.indexOf(item)] = newItem
+    console.log(shoppingCart)
+  } 
+}
+
+modifyItem("Tea", "Green-tea")
+
+/*
+console.log(shoppingCart.indexOf("Honey"))
+console.log(shoppingCart)
+console.log(shoppingCart.splice(shoppingCart.indexOf("Honey"), 1))
+console.log(shoppingCart)
+*/
+
+//In countries array check if 'Ethiopia' exists in the array if it exists print 'ETHIOPIA'. If it does not exist add to the countries list.
 console.log(countries)
+function checkCounty(country){
+  if(countries.indexOf(country) === -1){
+    countries.push(country.toUpperCase())
+    console.log(countries)
+  }else{
+    console.log("country already added")
+  }
+}
+
+checkCounty('Ethiopia'),
+checkCounty('Argentina')
+
+//Concatenate the following two variables and store it in a fullStack variable.
+const frontEnd = ['HTML', 'CSS', 'JS', 'React', 'Redux']
+const backEnd = ['Node','Express', 'MongoDB']
+
+const fullStack = frontEnd.concat(backEnd)
+console.log(fullStack)
+const full = [...frontEnd,...backEnd]
+console.log(full)
 
 ///////LEVEL3
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+
+/*Sort the array and find the min and max age
+Find the median age(one middle item or two middle items divided by two)
+Find the average age(all items divided by number of items)
+Find the range of the ages(max minus min)
+Compare the value of (min - average) and (max - average), use abs() method 1.Slice the first ten countries from the countries array 
+*/
+
+ages.sort()
+console.log(ages)
+let minAge = ages[0]
+console.log("The min age is:", minAge)
+let maxAge = ages[ages.length-1]
+console.log("The max age is:", maxAge)
+
+let medianAge = ((maxAge - minAge)/2) + minAge
+console.log("The median age is:", medianAge)
+
+let averAge = 0;
+function theAverage(arr) {
+for(let i = 0; i<arr.length; i++){
+   averAge += arr[i]/arr.length
+}
+console.log("The average Age is:", averAge.toFixed(2))
+} 
+
+theAverage(ages)
+
+let rangeAge = maxAge - minAge
+console.log("The range of the ages is:", rangeAge)
+
+//Find the middle country(ies) in the countries array
+
+//Divide the countries array into two equal arrays if it is even. If countries array is not even , one more country for the first half.

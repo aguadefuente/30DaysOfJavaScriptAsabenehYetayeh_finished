@@ -1,6 +1,7 @@
 {
   "name": "apuntes",
   "version": "1.0.0",
+  "type": "module",
   "description": "apuntesJS",
   "main": "main.js",
   "scripts": {
