@@ -339,4 +339,18 @@ console.log("The range of the ages is:", rangeAge)
 let middleCountry = countries[countries.length/2-1]
 console.log(middleCountry)
 
+
 //Divide the countries array into two equal arrays if it is even. If countries array is not even , one more country for the first half.
+  console.log(countries)
+  let arrMitad1 
+  let arrMitad2 
+  if(countries.length%2 === 0){
+    arrMitad1 = countries.slice(0, countries.length/2)
+    arrMitad2 = countries.slice(countries.length/2)
+    console.log(arrMitad1, arrMitad2)
+  } else {
+    arrMitad1 = countries.slice(0, countries.length/2+1)
+    arrMitad2 = countries.slice(countries.length/2+1)
+    console.log(arrMitad1, arrMitad2)
+  }
+  
