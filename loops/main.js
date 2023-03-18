@@ -99,32 +99,86 @@ for(let i=0; i<=10; i++){
  8    64    512
  9    81    729
  10   100   1000
-*/
 
-
-
-
-
-
-
-
+Me encantó! Ayuda Gordillo!!! Debuggearlo siempre que necesitemos recordar como funciona
+ */
+console.log("-----------------------------")
+let columnas = 10;
+for(let i=0; i<=columnas; i++){
+    let result = []
+    for(let j=0; j<3; j++){
+       result.push(Math.pow(i, j+1))
+    }
+    console.log(result.join('\t')) //\t es tab - un espacio hacia el lado
+}
 
 //Use for loop to iterate from 0 to 100 and print only even numbers
+for(let i= 0; i<=50; i++){
+    console.log(i*2)
+} //este fue mi intento
+
+for(let i= 0; i<=100; i+=2){
+    console.log(i)
+} //este es el ejemplo del tutorial
 
 //Use for loop to iterate from 0 to 100 and print only odd numbers
+for(let i= 1; i<=100; i+=2){
+    console.log(i)
+}
 
 //Use for loop to iterate from 0 to 100 and print only prime numbers
 
+
 //Use for loop to iterate from 0 to 100 and print the sum of all numbers: "The sum of all numbers from 0 to 100 is 5050"
+let resultado = 0
+for(let i = 0; i<=100; i++){
+ resultado += i
+}
+console.log("The sum of all numbers from 0 to 100 is " + resultado)
+
 //Use for loop to iterate from 0 to 100 and print the sum of all evens and the sum of all odds: "The sum of all evens from 0 to 100 is 2550. And the sum of all odds from 0 to 100 is 2500"
-//Use for loop to iterate from 0 to 100 and print the sum of all evens and the sum of all odds. 
+let oddNums = 0;
+let evenNums = 0;
+for(let i = 0; i<=100; i++){
+    if(i%2 === 0){
+        evenNums += i
+    } else{
+        oddNums += i
+    }
+} 
+console.log("The sum of all even numbers is " + evenNums + ". And the sum of all odd numbers is " + oddNums)
+
 //Print sum of evens and sum of odds as array: [2550, 2500]
+let numArr = []
+numArr[0] = evenNums
+numArr[1] = oddNums
+console.log(numArr)
 
 //Develop a small script which generate array of 5 random numbers
+const randomArr = []
+for(let i = 0; i<=5; i++){
+    randomArr.push(Math.floor((Math.random() * 10) + 1)) //ramdon del 0 al 10
+   }
+console.log(randomArr)
 
 //Develop a small script which generate array of 5 random numbers and the numbers must be unique
+const uniqueRandomArr = []
+for(let i = 0; i<=5; i++){
+    let unique = Math.floor((Math.random() * 10) + 1)
+    if(uniqueRandomArr.indexOf(unique) == -1){
+        uniqueRandomArr.push(unique) 
+    }
+}
+console.log(uniqueRandomArr)
 
 //Develop a small script which generate a six characters random id: 5j2khz
+const randomId = function(length = 6) {
+    return Math.random().toString(36).substring(2, length+2);
+};
+
+console.log(randomId())
+
+
 
 /////////LEVEL 2
 
