@@ -1,4 +1,31 @@
 console.log("apuntes loop")
+
+const countries = [
+    'Albania',
+    'Bolivia',
+    'Canada',
+    'Denmark',
+    'Ethiopia',
+    'Finland',
+    'Germany',
+    'Hungary',
+    'Ireland',
+    'Japan',
+    'Kenya'
+  ]
+  
+  const webTechs = [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'React',
+    'Redux',
+    'Node',
+    'MongoDB'
+  ]
+  
+  const mernStack = ['MongoDB', 'Express', 'React', 'Node']
+
 //////////LEVEL 1
 //Iterate 0 to 10 using for loop, do the same using while and do while loop
 for(let i=0; i<=10; i++){
@@ -159,7 +186,7 @@ const randomArr = []
 for(let i = 0; i<=5; i++){
     randomArr.push(Math.floor((Math.random() * 10) + 1)) //ramdon del 0 al 10
    }
-console.log(randomArr)
+console.log("randomArr", randomArr)
 
 //Develop a small script which generate array of 5 random numbers and the numbers must be unique
 const uniqueRandomArr = []
@@ -169,18 +196,94 @@ for(let i = 0; i<=5; i++){
         uniqueRandomArr.push(unique) 
     }
 }
-console.log(uniqueRandomArr)
+console.log("uniqueRandomArr", uniqueRandomArr)
 
 //Develop a small script which generate a six characters random id: 5j2khz
-const randomId = function(length = 6) {
+const randomId = function(length) {
     return Math.random().toString(36).substring(2, length+2);
 };
 
-console.log(randomId())
-
-
+console.log("six ramdon:", randomId(6))
 
 /////////LEVEL 2
+//Develop a small script which generate any number of characters random id
+
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
+console.log(makeid(5));
+console.log(makeid(10));
+console.log(makeid(20));
+
+//Write a script which generates a random hexadecimal number.
+//Write a script which generates a random rgb color number.
+//sing the above countries array, create the following new array
+//Using the above countries array, create an array for countries length
+/*
+Use the countries array to create the following array of arrays
+
+  [
+  ['Albania', 'ALB', 7],
+  ['Bolivia', 'BOL', 7],
+  ['Canada', 'CAN', 6],
+  ['Denmark', 'DEN', 7],
+  ['Ethiopia', 'ETH', 8],
+  ['Finland', 'FIN', 7],
+  ['Germany', 'GER', 7],
+  ['Hungary', 'HUN', 7],
+  ['Ireland', 'IRE', 7],
+  ['Iceland', 'ICE', 7],
+  ['Japan', 'JAP', 5],
+  ['Kenya', 'KEN', 5]
+]
+*/
+
+//check if there is a country or countries containing the word 'land'. If there are countries containing 'land', print it as array. If there is no country containing the word 'land', print 'All these countries are without land'
+//['Finland','Ireland', 'Iceland']
+
+//check if there is a country or countries end with a substring 'ia' //['Albania', 'Bolivia','Ethiopia']
+
+//find the country containing the biggest number of characters. Ethiopia
+
+// find the country containing only 5 characters. ['Japan', 'Kenya']
+
+//Find the longest word in the webTechs array 
+
+/*chs array to create the following array of arrays: 
+[["HTML", 4], ["CSS", 3],["JavaScript", 10],["React", 5],["Redux", 5],["Node", 4],["MongoDB", 7]] 
+*/
+
+//An application created using MongoDB, Express, React and Node is called a MERN stack app. Create the acronym MERN by using the array mernStack
+
+//Iterate through the array, ["HTML", "CSS", "JS", "React", "Redux", "Node", "Express", "MongoDB"] using a for loop or for of loop and print out the items.
+
+//This is a fruit array , ['banana', 'orange', 'mango', 'lemon'] reverse the order using loop without using a reverse method.
+
+//Print all the elements of array as shown below.
+
+/*  const fullStack = [
+    ['HTML', 'CSS', 'JS', 'React'],
+    ['Node', 'Express', 'MongoDB']
+  ]
+  
+  HTML
+  CSS
+  JS
+  REACT
+  NODE
+  EXPRESS
+  MONGODB 
+  */
+
 
 
 /////////LEVEL 3
