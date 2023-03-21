@@ -225,12 +225,58 @@ console.log(makeid(10));
 console.log(makeid(20));
 
 //Write a script which generates a random hexadecimal number.
+const getRanHex = size => {
+    let result = [];
+    let hexRef = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+  
+    for (let n = 0; n < size; n++) {
+      result.push(hexRef[Math.floor(Math.random() * 16)]);
+    }
+    return result.join('');
+  }
+  
+  console.log("hexaNum", getRanHex(6));
+  console.log("hexaNum",getRanHex(12));
+  console.log("hexaNum",getRanHex(3));
+
+  //otro ejemplo
+  function genHexString(len) {
+    let output = '';
+    for (let i = 0; i < len; ++i) {
+        output += (Math.floor(Math.random() * 16)).toString(16);
+    }
+    return output;
+}
+
+console.log("hexaNum2", genHexString(6))
+console.log("hexaNum2", genHexString(12))
+
 //Write a script which generates a random rgb color number.
-//sing the above countries array, create the following new array
+function colorGen() {
+    const r = Math.floor(Math.random() * 256); //0 a 255
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + "," + g + "," + b + ")";
+  }
+
+console.log("rgb_color:", colorGen())
+
+//using the above countries array, create the following new array ["ALBANIA", "BOLIVIA", "CANADA", "DENMARK", "ETHIOPIA", "FINLAND", "GERMANY", "HUNGARY", "IRELAND", "JAPAN", "KENYA"]
+const countryArr = []
+for(const country of  countries){
+    countryArr.push(country.toUpperCase())
+}
+console.log(countryArr)
+
 //Using the above countries array, create an array for countries length
+const countryLengthArr = []
+for(const country of  countries){
+    countryLengthArr.push(country.length)
+}
+console.log(countryLengthArr)
+
 /*
 Use the countries array to create the following array of arrays
-
   [
   ['Albania', 'ALB', 7],
   ['Bolivia', 'BOL', 7],
@@ -247,43 +293,98 @@ Use the countries array to create the following array of arrays
 ]
 */
 
+const arrayOfArrays = []
+for(let i=0; i<countries.length; i++){
+    const arrayInterno = [];
+    
+       arrayInterno.push(countries[i])
+       arrayInterno.push(countries[i].toUpperCase().slice(0,3))
+       arrayInterno.push(countries[i].length)
+
+    arrayOfArrays.push(arrayInterno)
+}
+
+console.log(arrayOfArrays)
+
+
 //check if there is a country or countries containing the word 'land'. If there are countries containing 'land', print it as array. If there is no country containing the word 'land', print 'All these countries are without land'
-//['Finland','Ireland', 'Iceland']
+//['Finland','Ireland']
+
+const land = []
+const noland = []
+for(const pais of countries){
+    if(pais.includes("land") === true){
+        land.push(pais)
+    } else {
+        noland.push(pais)
+    }
+}
+
+console.log(land)
+console.log(noland.slice(0, noland.length-1).join(",") + " and " + noland.slice(noland.length-1).join(",") + " are without land")
 
 //check if there is a country or countries end with a substring 'ia' //['Albania', 'Bolivia','Ethiopia']
+const aiArr = []
+for(const pais of countries){
+    if(pais.match("ia") !== null){
+        aiArr.push(pais.match("ia").input)
+    }
+}
+console.log(aiArr)
 
 //find the country containing the biggest number of characters. Ethiopia
+let theBiggest = countries[0]
+for(const pais of countries){
+    if(pais.length >= theBiggest.length){
+    theBiggest = pais
+    }
+}
+console.log(theBiggest)
 
-// find the country containing only 5 characters. ['Japan', 'Kenya']
-
-//Find the longest word in the webTechs array 
-
-/*chs array to create the following array of arrays: 
-[["HTML", 4], ["CSS", 3],["JavaScript", 10],["React", 5],["Redux", 5],["Node", 4],["MongoDB", 7]] 
-*/
+//find the country containing only 5 characters. ['Japan', 'Kenya']
+let fiveChar = []
+for(const pais of countries){
+    if(pais.length === 5){
+    fiveChar.push(pais)
+    }
+}
+console.log(fiveChar)
 
 //An application created using MongoDB, Express, React and Node is called a MERN stack app. Create the acronym MERN by using the array mernStack
+let mern = ""
+for(const lang of mernStack){
+    mern += lang.toUpperCase().slice(0,1)
+}
+console.log(mern)
 
-//Iterate through the array, ["HTML", "CSS", "JS", "React", "Redux", "Node", "Express", "MongoDB"] using a for loop or for of loop and print out the items.
+//reverse the order using loop without using a reverse method.
+const fruitArr  = ['banana', 'orange', 'mango', 'lemon']
+const reverseFruit = []
+for(const fruit of fruitArr){
+   reverseFruit.unshift(fruit)
+}
+console.log(reverseFruit)
 
-//This is a fruit array , ['banana', 'orange', 'mango', 'lemon'] reverse the order using loop without using a reverse method.
+//Print all the elements of fullStack array
 
-//Print all the elements of array as shown below.
-
-/*  const fullStack = [
+const fullStack = [
     ['HTML', 'CSS', 'JS', 'React'],
     ['Node', 'Express', 'MongoDB']
-  ]
-  
-  HTML
-  CSS
-  JS
-  REACT
-  NODE
-  EXPRESS
-  MONGODB 
-  */
+]
 
-
+for(let i=0; i<fullStack.length; i++){
+    for(let j=0; j<fullStack[i].length; j++){
+        console.log(fullStack[i][j])
+    }
+}
 
 /////////LEVEL 3
+
+//Copy countries array(Avoid mutation)
+//Arrays are mutable. Create a copy of array which does not modify the original. Sort the copied array and store in a variable sortedMern
+const copyArr = [...mernStack]
+console.log(copyArr)
+const sortedMern = copyArr.sort()
+console.log(sortedMern)
+console.log(mernStack)
+
