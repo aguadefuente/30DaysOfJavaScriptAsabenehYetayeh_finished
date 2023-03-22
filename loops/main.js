@@ -309,7 +309,6 @@ console.log(arrayOfArrays)
 
 //check if there is a country or countries containing the word 'land'. If there are countries containing 'land', print it as array. If there is no country containing the word 'land', print 'All these countries are without land'
 //['Finland','Ireland']
-
 const land = []
 const noland = []
 for(const pais of countries){
@@ -366,7 +365,6 @@ for(const fruit of fruitArr){
 console.log(reverseFruit)
 
 //Print all the elements of fullStack array
-
 const fullStack = [
     ['HTML', 'CSS', 'JS', 'React'],
     ['Node', 'Express', 'MongoDB']
