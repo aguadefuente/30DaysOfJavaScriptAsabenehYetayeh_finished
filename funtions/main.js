@@ -314,6 +314,40 @@ console.log(isUniform(["laura", 2, [1, 2]]))
 console.log(isUniform(["laura", "santiago"]))
 
 //JavaScript variable name does not support special characters or symbols except $ or _. Write a function isValidVariable which check if a variable is valid or invalid variable
+const isValidVariable = (varName) => {
+   const regex = '^([a-zA-Z_$][a-zA-Z\d_$]*)$'
+   const reservedWords = ["break", "do", "instanceof", "typeof", "case", "else", "new", "var", "catch", "finally", "return", "void", "continue", "for", "switch", "while", "debugger", "function", "this", "with", "default", "if", "throw", "delete", "in", "try", "class", "enum", "extends", "super", "const", "export", "import", "implements", "let", "private", "public", "yield", "interface", "package", "protected", "static", "null", "true", "false"]
+if(varName === "" || varName === "null" || reservedWords.indexOf(varName) !== -1){
+    return "variable name cannot be empty or null or be a reserved word"
+}
+   if(varName.match(regex)){
+    return "is a valid variable name"
+   } else {
+    return "is not a valid variable name"
+   }
+}
 
+console.log(isValidVariable("1varName")) //not valid - comienza en número
+console.log(isValidVariable("$varName"))
+console.log(isValidVariable("_varName"))
+console.log(isValidVariable("_varN/ame")) //not valid - tiene / 
+console.log(isValidVariable("let")) //reserved word /not valid
+console.log(isValidVariable("")) //empty /not valid
+console.log(isValidVariable("do")) //reserved word /not valid
 
 //Write a function which returns array of seven random numbers in a range of 0-9. All the numbers must be unique.
+function sevenUniqueArr() {
+ const sevenRandomUnique = []
+ let theElements = 0
+
+for(let i=0; sevenRandomUnique.length<7; i++){
+    theElements = Math.floor(Math.random() * 10);
+if(sevenRandomUnique.indexOf(theElements) === -1){
+    sevenRandomUnique.push(theElements)
+}
+}
+
+return sevenRandomUnique
+}
+
+console.log(sevenUniqueArr())
