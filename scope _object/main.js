@@ -86,7 +86,7 @@ console.log(key_values)
 console.log(triangle.hasOwnProperty('name'))
 console.log(triangle.hasOwnProperty('color'))
 
-//EJERCICIOS
+//////////EJERCICIOS
 const users = {
   Alex: {
     email: 'alex@alex.com',
@@ -139,19 +139,55 @@ const users = {
   }
 }
 
-for(let elem in users){
- console.log(users[elem].skills)
+//Find the person who has many skills in the users object.
+let moreSkills = 0
+let theUser = undefined
+for(let user in users){
+  console.log(user, users[user].skills, users[user].skills.length) //[] notation porque es una variable [elem]
+  
+  if(users[user].skills.length > moreSkills){
+    moreSkills = users[user].skills.length
+    theUser = user
+  }
 }
 
+console.log("the user with more skills is " + theUser + ". Has " + moreSkills + " skills") 
 
-//Find the person who has many skills in the users object.
 //Count logged in users, count users having greater than equal to 50 points from the following object
+let count = 0
+
+for(let user in users){
+  console.log(user, users[user].isLoggedIn  ,users[user].points) 
+  
+  if(users[user].isLoggedIn === true && users[user].points >= 50){
+    count++
+  }
+}
+console.log("There are " + count + " users with 50 points or more")
+
 //Find people who are MERN stack developer from the users object
+/*una solución de internet para ver más adelante cuando repase .filter .map y destructurin
+let mern = Object.entries(users).filter(([_, user]) => user.skills.includes("MongoDB", "Express", "React", "Node")).map(([name]) => name).join(", ")
+*/
+
+let mern = []
+
+for(let user in users){
+   
+  if(users[user].skills.includes("MongoDB", "Express", "React", "Node")){
+    mern.push(user)
+  }
+}
+
+console.log(mern)
+
 //Set your name in the users object without modifying the original users object
+const copyUsers = Object.assign({}, users) //copy object withour modifying original
+copyUsers.Laura = {} //setting new key
+console.log("copyWithMe: ", copyUsers)
+console.log(Object.keys(copyUsers))
 
-//The products array has three elements and each of them has six properties. a. Create a function called rateProduct which rates the product b. Create a function called averageRating which calculate the average rating of a product
-//Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
-
+///////////
 const products = [
   {
     _id: 'eedfcf',
@@ -181,3 +217,31 @@ const products = [
     likes: ['fg12cy']
   }
 ]
+
+//The products array has three elements and each of them has six properties. a. Create a function called rateProduct which rates the product b. Create a function called averageRating which calculate the average rating of a product
+/*function rateProduct(userid, rate){ //rate the product
+for(let i=0; i<users.length; i++){
+  for(let j=0; i<users[i].ratings.length; j++){
+    if(users[i].ratings.length === 0 || )
+  } 
+}*/
+
+//console.log("Rate", rateProduct())
+
+function averageRating(){ //calculate the average rating
+
+}
+
+console.log("Average", averageRating())
+console.log(JSON.stringify(products[0].ratings[0].userId))
+console.log(JSON.stringify(products[1].ratings))
+console.log(JSON.stringify(products[2].ratings))
+console.log("key: ", Object.values(products[2].ratings))
+
+//Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
+
+function likeProduct(){
+
+}
+
+console.log("like", likeProduct())
