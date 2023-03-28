@@ -86,7 +86,8 @@ console.log(key_values)
 console.log(triangle.hasOwnProperty('name'))
 console.log(triangle.hasOwnProperty('color'))
 
-//////////EJERCICIOS
+/////////////////////////////// EJERCICIOS ////////////////////////////
+////////////// USER-OBJECT //////////
 const users = {
   Alex: {
     email: 'alex@alex.com',
@@ -187,7 +188,7 @@ copyUsers.Laura = {} //setting new key
 console.log("copyWithMe: ", copyUsers)
 console.log(Object.keys(copyUsers))
 
-///////////
+////////////// PRODUCT-OBJECT //////////////
 const products = [
   {
     _id: 'eedfcf',
@@ -219,29 +220,114 @@ const products = [
 ]
 
 //The products array has three elements and each of them has six properties. a. Create a function called rateProduct which rates the product b. Create a function called averageRating which calculate the average rating of a product
-/*function rateProduct(userid, rate){ //rate the product
-for(let i=0; i<users.length; i++){
-  for(let j=0; i<users[i].ratings.length; j++){
-    if(users[i].ratings.length === 0 || )
-  } 
-}*/
+////////////rate the product
+/*
+console.log("///////////////////")
+console.log("///////// RATING //////////")
+function rateProduct(theProduct, user_Id, rate){
+  const  objLength = products.length
 
-//console.log("Rate", rateProduct())
+  for (let i = 0; i < objLength; i++) {
+    const current = products[i];
+    //console.log("current:", i, current)
+    const ratingLength = current.ratings.length
+    //console.log("ratingLength:", ratingLength)
 
-function averageRating(){ //calculate the average rating
-
+   
+      for (let j = 0; j < ratingLength; j++) {
+        if(current.name === theProduct){
+        const currentRaiting = current.ratings[j];
+        if (currentRaiting.userId === user_Id){
+          console.log(`Al usuario ${user_Id} le gustó ${current.name} tanto: ${currentRaiting.rate}`)
+        } else if(!("user_Id" in current.ratings[j])) {
+          current.ratings[j].push({userId: user_Id})
+          console.log(Object.entries(current.ratings))
+        }
+      }
+    }
+    
+  }
+  
 }
 
-console.log("Average", averageRating())
-console.log(JSON.stringify(products[0].ratings[0].userId))
-console.log(JSON.stringify(products[1].ratings))
-console.log(JSON.stringify(products[2].ratings))
-console.log("key: ", Object.values(products[2].ratings))
+rateProduct('mobile phone', 'fg12cy');
+rateProduct('mobile phone', 'zwf8md');
+rateProduct('mobile phone', 'laura', 2);
+*/
+
+/////////calculate the average rating
+/*
+function averageRating(){ 
+
+}
+//console.log("Average", averageRating())
+*/
+
+
 
 //Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
-
+/*
 function likeProduct(){
 
 }
+//console.log("like", likeProduct())
+*/
 
-console.log("like", likeProduct())
+
+
+
+//////////////////// PROBANDO AGARRAR LOS ELEMENTOS //////////////////////////
+
+console.log("///////////////////")
+console.log("PROBANDO AGARRAR LOS ELEMENTOS")
+
+console.log(JSON.stringify(products[0].ratings[0].userId))
+console.log(JSON.stringify(products[1].ratings))
+console.log(JSON.stringify(products[2].ratings))
+console.log("key: ", Object.keys(products[2].ratings[0]))
+console.log("checking:", products[2].ratings[0].hasOwnProperty("userId"));
+console.log("checking2:", !("userId" in products[2].ratings[0]));
+console.log("checking3:", ("userId" in products[2].ratings[0]));
+
+console.log(products[0])
+console.log(products[0].name)
+console.log(products[0].ratings)
+
+products[0].ratings.push({userId: "laura", rate: 5})
+console.log("pusheado:", products[0].ratings)
+console.log(products[0].ratings[products[0].ratings.length-1]) //products[0].ratings[2]
+products[0].ratings.pop()
+console.log("POP-", products[0].ratings[products[0].ratings.length-1])
+
+const copyProducts = Object.assign({}, products)
+console.log(copyProducts)
+console.log(copyProducts[0].ratings)
+
+function ponemosRate(p, usuario, r){
+  
+ for (let i = 0; i < products.length; i++) {
+  const current = products[i];
+  if(current.name === p){
+    for (let j = 0; j < current.ratings.length; j++) {
+      const currentRating = current.ratings[j];
+      if(currentRating.userId === usuario ){
+        console.log("ese usuario ya existe")
+      } else if (currentRating.length === 0 || currentRating.userId !== usuario) {
+        current.ratings.push({userId: usuario, rate: r})
+        return current.ratings
+      }
+        
+      
+    }
+  }
+ }
+ 
+}
+
+console.log("latv-", ponemosRate('TV', "laura", 5))
+console.log("lapc-", ponemosRate('Laptop', "laura", 8))
+console.log("latv-", ponemosRate('TV', "santiago", 15))
+console.log("latv-", ponemosRate('TV', "fg12cy", 10))
+console.log("copy", copyProducts[0].ratings)
+console.log("copy", copyProducts[1].ratings)
+console.log("copy", copyProducts[2].ratings)
