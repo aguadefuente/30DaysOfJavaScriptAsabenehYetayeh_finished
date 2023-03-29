@@ -1,4 +1,4 @@
-console.log("apuntes scope")
+console.log("apuntes scope");
 /*SCOPE
 Variables scopes can be:
 GLOBAL
@@ -51,210 +51,247 @@ const triangle = {
   base: 20,
   altura: 8.66,
   "triangle-name": "equilatero",
-  getArea: function() { //a function is an object methos
-    return Math.pow((this.base * this.altura), 2) //this refers to the object itself
-  }
-}
-console.log(triangle)
-console.log(triangle.color) //accession .
-console.log(triangle["triangle-name"]) //accessing []
-console.log(triangle.getArea())
+  getArea: function () {
+    //a function is an object methos
+    return Math.pow(this.base * this.altura, 2); //this refers to the object itself
+  },
+};
+console.log(triangle);
+console.log(triangle.color); //accession .
+console.log(triangle["triangle-name"]); //accessing []
+console.log(triangle.getArea());
 
-triangle.color = "blue" //changing a new keys - objects are mutable
-triangle.border = "solid-black" //setting new keys
-console.log(triangle.color)
-console.log(triangle)
+triangle.color = "blue"; //changing a new keys - objects are mutable
+triangle.border = "solid-black"; //setting new keys
+console.log(triangle.color);
+console.log(triangle);
 
 //OBJECT METHODS
 //Object.assign: To copy an object without modifying the original object
-const copyTriangle = Object.assign({}, triangle)
-console.log("copy", copyTriangle)
+const copyTriangle = Object.assign({}, triangle);
+console.log("copy", copyTriangle);
 
 //Object.keys: To get the keys or properties of an object as an array
-let keys = Object.keys(triangle)
-console.log(keys)
+let keys = Object.keys(triangle);
+console.log(keys);
 
 //Object.values:To get values of an object as an array
-let values = Object.values(triangle)
-console.log(values)
+let values = Object.values(triangle);
+console.log(values);
 
 //Object.entries:To get the keys and values in an array
-let key_values = Object.entries(triangle)
-console.log(key_values)
+let key_values = Object.entries(triangle);
+console.log(key_values);
 
 //hasOwnProperty: To check if a specific key or property exist in an object
-console.log(triangle.hasOwnProperty('name'))
-console.log(triangle.hasOwnProperty('color'))
+console.log(triangle.hasOwnProperty("name"));
+console.log(triangle.hasOwnProperty("color"));
 
 /////////////////////////////// EJERCICIOS ////////////////////////////
 ////////////// USER-OBJECT //////////
 const users = {
   Alex: {
-    email: 'alex@alex.com',
-    skills: ['HTML', 'CSS', 'JavaScript'],
+    email: "alex@alex.com",
+    skills: ["HTML", "CSS", "JavaScript"],
     age: 20,
     isLoggedIn: false,
-    points: 30
+    points: 30,
   },
   Asab: {
-    email: 'asab@asab.com',
-    skills: ['HTML', 'CSS', 'JavaScript', 'Redux', 'MongoDB', 'Express', 'React', 'Node'],
+    email: "asab@asab.com",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Redux",
+      "MongoDB",
+      "Express",
+      "React",
+      "Node",
+    ],
     age: 25,
     isLoggedIn: false,
-    points: 50
+    points: 50,
   },
   Brook: {
-    email: 'daniel@daniel.com',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux'],
+    email: "daniel@daniel.com",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Redux"],
     age: 30,
     isLoggedIn: true,
-    points: 50
+    points: 50,
   },
   Daniel: {
-    email: 'daniel@alex.com',
-    skills: ['HTML', 'CSS', 'JavaScript', 'Python'],
+    email: "daniel@alex.com",
+    skills: ["HTML", "CSS", "JavaScript", "Python"],
     age: 20,
     isLoggedIn: false,
-    points: 40
+    points: 40,
   },
   John: {
-    email: 'john@john.com',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node.js'],
+    email: "john@john.com",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Redux", "Node.js"],
     age: 20,
     isLoggedIn: true,
-    points: 50
+    points: 50,
   },
   Thomas: {
-    email: 'thomas@thomas.com',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React'],
+    email: "thomas@thomas.com",
+    skills: ["HTML", "CSS", "JavaScript", "React"],
     age: 20,
     isLoggedIn: false,
-    points: 40
+    points: 40,
   },
   Paul: {
-    email: 'paul@paul.com',
-    skills: ['HTML', 'CSS', 'JavaScript', 'MongoDB', 'Express', 'React', 'Node'],
+    email: "paul@paul.com",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "MongoDB",
+      "Express",
+      "React",
+      "Node",
+    ],
     age: 20,
     isLoggedIn: false,
-    points: 40
-  }
-}
+    points: 40,
+  },
+};
 
 //Find the person who has many skills in the users object.
-let moreSkills = 0
-let theUser = undefined
-for(let user in users){
-  console.log(user, users[user].skills, users[user].skills.length) //[] notation porque es una variable [elem]
-  
-  if(users[user].skills.length > moreSkills){
-    moreSkills = users[user].skills.length
-    theUser = user
+let moreSkills = 0;
+let theUser = undefined;
+for (let user in users) {
+  console.log(user, users[user].skills, users[user].skills.length); //[] notation porque es una variable [elem]
+
+  if (users[user].skills.length > moreSkills) {
+    moreSkills = users[user].skills.length;
+    theUser = user;
   }
 }
 
-console.log("the user with more skills is " + theUser + ". Has " + moreSkills + " skills") 
+console.log(
+  "the user with more skills is " + theUser + ". Has " + moreSkills + " skills"
+);
 
 //Count logged in users, count users having greater than equal to 50 points from the following object
-let count = 0
+let count = 0;
 
-for(let user in users){
-  console.log(user, users[user].isLoggedIn  ,users[user].points) 
-  
-  if(users[user].isLoggedIn === true && users[user].points >= 50){
-    count++
+for (let user in users) {
+  console.log(user, users[user].isLoggedIn, users[user].points);
+
+  if (users[user].isLoggedIn === true && users[user].points >= 50) {
+    count++;
   }
 }
-console.log("There are " + count + " users with 50 points or more")
+console.log("There are " + count + " users with 50 points or more");
 
 //Find people who are MERN stack developer from the users object
 /*una solución de internet para ver más adelante cuando repase .filter .map y destructurin
 let mern = Object.entries(users).filter(([_, user]) => user.skills.includes("MongoDB", "Express", "React", "Node")).map(([name]) => name).join(", ")
 */
 
-let mern = []
+let mern = [];
 
-for(let user in users){
-   
-  if(users[user].skills.includes("MongoDB", "Express", "React", "Node")){
-    mern.push(user)
+for (let user in users) {
+  if (users[user].skills.includes("MongoDB", "Express", "React", "Node")) {
+    mern.push(user);
   }
 }
 
-console.log(mern)
+console.log(mern);
 
 //Set your name in the users object without modifying the original users object
-const copyUsers = Object.assign({}, users) //copy object withour modifying original
-copyUsers.Laura = {} //setting new key
-console.log("copyWithMe: ", copyUsers)
-console.log(Object.keys(copyUsers))
+const copyUsers = Object.assign({}, users); //copy object withour modifying original
+copyUsers.Laura = {}; //setting new key
+console.log("copyWithMe: ", copyUsers);
+console.log(Object.keys(copyUsers));
 
 ////////////// PRODUCT-OBJECT //////////////
-const products = [
+const productos = [
   {
-    _id: 'eedfcf',
-    name: 'mobile phone',
-    description: 'Huawei Honor',
+    _id: "eedfcf",
+    name: "mobile phone",
+    description: "Huawei Honor",
     price: 200,
     ratings: [
-      { userId: 'fg12cy', rate: 5 },
-      { userId: 'zwf8md', rate: 4.5 }
+      { userId: "fg12cy", rate: 5 },
+      { userId: "zwf8md", rate: 4.5 },
     ],
-    likes: []
+    likes: [],
   },
   {
-    _id: 'aegfal',
-    name: 'Laptop',
-    description: 'MacPro: System Darwin',
+    _id: "aegfal",
+    name: "Laptop",
+    description: "MacPro: System Darwin",
     price: 2500,
     ratings: [],
-    likes: ['fg12cy']
+    likes: ["fg12cy"],
   },
   {
-    _id: 'hedfcg',
-    name: 'TV',
-    description: 'Smart TV:Procaster',
+    _id: "hedfcg",
+    name: "TV",
+    description: "Smart TV:Procaster",
     price: 400,
-    ratings: [{ userId: 'fg12cy', rate: 5 }],
-    likes: ['fg12cy']
-  }
-]
+    ratings: [{ userId: "fg12cy", rate: 5 }],
+    likes: ["fg12cy"],
+  },
+];
+
+const copyProducts = [...productos]; //copiamos para trabajar sin modificar el original
+console.log("copyP-----", copyProducts);
 
 //The products array has three elements and each of them has six properties. a. Create a function called rateProduct which rates the product b. Create a function called averageRating which calculate the average rating of a product
 ////////////rate the product
-/*
-console.log("///////////////////")
-console.log("///////// RATING //////////")
-function rateProduct(theProduct, user_Id, rate){
-  const  objLength = products.length
 
+console.log("///////////////////");
+console.log("///////// RATING //////////");
+
+function rateProduct(theProduct, theUser, therate) {
+  const objLength = copyProducts.length;
+ 
   for (let i = 0; i < objLength; i++) {
-    const current = products[i];
-    //console.log("current:", i, current)
-    const ratingLength = current.ratings.length
-    //console.log("ratingLength:", ratingLength)
-
-   
-      for (let j = 0; j < ratingLength; j++) {
-        if(current.name === theProduct){
-        const currentRaiting = current.ratings[j];
-        if (currentRaiting.userId === user_Id){
-          console.log(`Al usuario ${user_Id} le gustó ${current.name} tanto: ${currentRaiting.rate}`)
-        } else if(!("user_Id" in current.ratings[j])) {
-          current.ratings[j].push({userId: user_Id})
-          console.log(Object.entries(current.ratings))
+    const current = copyProducts[i];
+    const ratingLength = current.ratings.length;
+    let count = 0;
+    if (current.name === theProduct) {
+      
+      if(ratingLength === 0){
+        current.ratings.push({ userId: theUser, rate: therate });
+        return Object.entries(current.ratings);
+      } else  {
+        
+        for (let j = 0; j < ratingLength; j++) {
+          
+          if (current.ratings[j].userId === theUser) {
+            count++;
+          }
+          if (count === 0) {
+            current.ratings.push({ userId: theUser, rate: therate });
+            return Object.entries(current.ratings);
+          } else {
+            return "el usuario ya rankeo";
+          }
         }
       }
+     
     }
-    
   }
-  
 }
 
-rateProduct('mobile phone', 'fg12cy');
-rateProduct('mobile phone', 'zwf8md');
-rateProduct('mobile phone', 'laura', 2);
-*/
 
+console.log(rateProduct("mobile phone", "fg12cy", 7));
+console.log(rateProduct("mobile phone", "fg12cy", 7));
+console.log(rateProduct("mobile phone", "laura", 10));
+console.log(rateProduct("mobile phone", "fg12cy", 7));
+//console.log(rateProduct("mobile phone", "zwf8md", 7));
+console.log(rateProduct("Laptop", "laura", 8));
+console.log(rateProduct("TV", "fg12cy", 7));
+
+
+console.log("pispeo", copyProducts[0].ratings)
+console.log("pispeo", copyProducts[1].ratings)
+console.log("pispeo", copyProducts[2].ratings)
 /////////calculate the average rating
 /*
 function averageRating(){ 
@@ -262,8 +299,6 @@ function averageRating(){
 }
 //console.log("Average", averageRating())
 */
-
-
 
 //Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
 /*
@@ -273,61 +308,7 @@ function likeProduct(){
 //console.log("like", likeProduct())
 */
 
-
-
-
 //////////////////// PROBANDO AGARRAR LOS ELEMENTOS //////////////////////////
 
-console.log("///////////////////")
-console.log("PROBANDO AGARRAR LOS ELEMENTOS")
-
-console.log(JSON.stringify(products[0].ratings[0].userId))
-console.log(JSON.stringify(products[1].ratings))
-console.log(JSON.stringify(products[2].ratings))
-console.log("key: ", Object.keys(products[2].ratings[0]))
-console.log("checking:", products[2].ratings[0].hasOwnProperty("userId"));
-console.log("checking2:", !("userId" in products[2].ratings[0]));
-console.log("checking3:", ("userId" in products[2].ratings[0]));
-
-console.log(products[0])
-console.log(products[0].name)
-console.log(products[0].ratings)
-
-products[0].ratings.push({userId: "laura", rate: 5})
-console.log("pusheado:", products[0].ratings)
-console.log(products[0].ratings[products[0].ratings.length-1]) //products[0].ratings[2]
-products[0].ratings.pop()
-console.log("POP-", products[0].ratings[products[0].ratings.length-1])
-
-const copyProducts = Object.assign({}, products)
-console.log(copyProducts)
-console.log(copyProducts[0].ratings)
-
-function ponemosRate(p, usuario, r){
-  
- for (let i = 0; i < products.length; i++) {
-  const current = products[i];
-  if(current.name === p){
-    for (let j = 0; j < current.ratings.length; j++) {
-      const currentRating = current.ratings[j];
-      if(currentRating.userId === usuario ){
-        console.log("ese usuario ya existe")
-      } else if (currentRating.length === 0 || currentRating.userId !== usuario) {
-        current.ratings.push({userId: usuario, rate: r})
-        return current.ratings
-      }
-        
-      
-    }
-  }
- }
- 
-}
-
-console.log("latv-", ponemosRate('TV', "laura", 5))
-console.log("lapc-", ponemosRate('Laptop', "laura", 8))
-console.log("latv-", ponemosRate('TV', "santiago", 15))
-console.log("latv-", ponemosRate('TV', "fg12cy", 10))
-console.log("copy", copyProducts[0].ratings)
-console.log("copy", copyProducts[1].ratings)
-console.log("copy", copyProducts[2].ratings)
+console.log("///////////////////");
+console.log("PROBANDO AGARRAR LOS ELEMENTOS");
