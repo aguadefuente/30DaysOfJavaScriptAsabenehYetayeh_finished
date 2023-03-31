@@ -273,7 +273,7 @@ function rateProduct(theobj, producto, quien, puntaje) {
     }
   }
 }
-
+////ARREGLAR QUE COMO EL ARRAY NO ESTÁ VACIO NO PUSHEA AL NEW USER
 console.log(rateProduct(copyProducts, "TV", "fg12cy", 4));
 console.log(rateProduct(copyProducts, "TV", "laura", 4));
 console.log(rateProduct(copyProducts, "Laptop", "laura", 10));
