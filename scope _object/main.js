@@ -243,49 +243,48 @@ console.log("copyP-----", copyProducts);
 
 //The products array has three elements and each of them has six properties. a. Create a function called rateProduct which rates the product b. Create a function called averageRating which calculate the average rating of a product
 ////////////rate the product
-
-console.log("///////////////////");
-console.log("///////// RATING //////////");
-
-function rateProduct(theProduct, theUser, therate) {
-  const objLength = copyProducts.length;
-
-  for (let i = 0; i < objLength; i++) {
-    const current = copyProducts[i];
-    const ratingLength = current.ratings.length;
-    let count = 0;
-    if (current.name === theProduct) {
-      if (ratingLength === 0) {
-        current.ratings.push({ userId: theUser, rate: therate });
-        return Object.entries(current.ratings);
-      } else {
-        for (let j = 0; j < ratingLength; j++) {
-          if (current.ratings[j].userId === theUser) {
-            count++;
-          }
-          if (count === 0) {
-            current.ratings.push({ userId: theUser, rate: therate });
-            return Object.entries(current.ratings);
-          } else {
-            return "el usuario ya rankeo";
-          }
+function rateProduct(theobj, producto, quien, puntaje) {
+  let yaesta = 0;
+  //para saber si el usuario ya ranqueo
+  for (let i = 0; i < theobj.length; i++) {
+    const current = theobj[i];
+    if (current.name === producto) {
+      for (let j = 0; j < current.ratings.length; j++) {
+        if (current.ratings.length > 0 || current.ratigs[j].userId === quien) {
+          yaesta++;
         }
+      }
+    }
+  }
+
+  //para agregar el ranking si el usuario es nuevo
+
+  if (yaesta >= 1) {
+    console.log("El usuario " + quien + " ya rankeo el producto " + producto);
+  } else {
+    for (let i = 0; i < theobj.length; i++) {
+      if (theobj[i].name === producto) {
+        theobj[i].ratings.push({ userId: quien, rate: puntaje });
+        console.log(
+          producto + " ahora tiene los siguientes rates: ",
+          Object.entries(theobj[i].ratings)
+        );
       }
     }
   }
 }
 
-console.log(rateProduct("mobile phone", "fg12cy", 7));
-console.log(rateProduct("mobile phone", "fg12cy", 7));
-console.log(rateProduct("mobile phone", "laura", 10));
-console.log(rateProduct("mobile phone", "zwf8md", 7));
-//console.log(rateProduct("mobile phone", "zwf8md", 7));
-console.log(rateProduct("Laptop", "laura", 8));
-console.log(rateProduct("TV", "fg12cy", 7));
+console.log(rateProduct(copyProducts, "TV", "fg12cy", 4));
+console.log(rateProduct(copyProducts, "TV", "laura", 4));
+console.log(rateProduct(copyProducts, "Laptop", "laura", 10));
+console.log(rateProduct(copyProducts, "Laptop", "laura", 10));
+console.log(rateProduct(copyProducts, "Laptop", "santiago", 6));
+console.log(rateProduct(copyProducts, "TV", "santiago", 6));
+console.log(rateProduct(copyProducts, "mobile phone", "laura", 8));
 
-console.log("pispeo", copyProducts[0].ratings);
-console.log("pispeo", copyProducts[1].ratings);
-console.log("pispeo", copyProducts[2].ratings);
+console.log("///////////////////");
+console.log("///////// RATING //////////");
+
 /////////calculate the average rating
 /*
 function averageRating(){ 
@@ -299,10 +298,8 @@ function averageRating(){
 function likeProduct(){
 
 }
+
+
+
 //console.log("like", likeProduct())
 */
-
-//////////////////// PROBANDO AGARRAR LOS ELEMENTOS //////////////////////////
-
-console.log("///////////////////");
-console.log("PROBANDO AGARRAR LOS ELEMENTOS");
