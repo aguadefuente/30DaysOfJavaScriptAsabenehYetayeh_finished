@@ -249,20 +249,17 @@ console.log("///////// RATING //////////");
 
 function rateProduct(theProduct, theUser, therate) {
   const objLength = copyProducts.length;
- 
+
   for (let i = 0; i < objLength; i++) {
     const current = copyProducts[i];
     const ratingLength = current.ratings.length;
     let count = 0;
     if (current.name === theProduct) {
-      
-      if(ratingLength === 0){
+      if (ratingLength === 0) {
         current.ratings.push({ userId: theUser, rate: therate });
         return Object.entries(current.ratings);
-      } else  {
-        
+      } else {
         for (let j = 0; j < ratingLength; j++) {
-          
           if (current.ratings[j].userId === theUser) {
             count++;
           }
@@ -274,24 +271,21 @@ function rateProduct(theProduct, theUser, therate) {
           }
         }
       }
-     
     }
   }
 }
 
-
 console.log(rateProduct("mobile phone", "fg12cy", 7));
 console.log(rateProduct("mobile phone", "fg12cy", 7));
 console.log(rateProduct("mobile phone", "laura", 10));
-console.log(rateProduct("mobile phone", "fg12cy", 7));
+console.log(rateProduct("mobile phone", "zwf8md", 7));
 //console.log(rateProduct("mobile phone", "zwf8md", 7));
 console.log(rateProduct("Laptop", "laura", 8));
 console.log(rateProduct("TV", "fg12cy", 7));
 
-
-console.log("pispeo", copyProducts[0].ratings)
-console.log("pispeo", copyProducts[1].ratings)
-console.log("pispeo", copyProducts[2].ratings)
+console.log("pispeo", copyProducts[0].ratings);
+console.log("pispeo", copyProducts[1].ratings);
+console.log("pispeo", copyProducts[2].ratings);
 /////////calculate the average rating
 /*
 function averageRating(){ 
