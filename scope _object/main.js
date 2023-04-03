@@ -249,16 +249,17 @@ function rateProduct(theobj, producto, quien, puntaje) {
   for (let i = 0; i < theobj.length; i++) {
     const current = theobj[i];
     if (current.name === producto) {
-      for (let j = 0; j < current.ratings.length; j++) {
-        if (current.ratings.length > 0 || current.ratigs[j].userId === quien) {
-          yaesta++;
+      if (current.ratings.length !== 0) {
+        for (let j = 0; j < current.ratings.length; j++) {
+          if (current.ratings[j].userId === quien) {
+            yaesta++;
+          }
         }
       }
     }
   }
 
   //para agregar el ranking si el usuario es nuevo
-
   if (yaesta >= 1) {
     console.log("El usuario " + quien + " ya rankeo el producto " + producto);
   } else {
@@ -273,6 +274,7 @@ function rateProduct(theobj, producto, quien, puntaje) {
     }
   }
 }
+
 ////ARREGLAR QUE COMO EL ARRAY NO ESTÁ VACIO NO PUSHEA AL NEW USER
 console.log(rateProduct(copyProducts, "TV", "fg12cy", 4));
 console.log(rateProduct(copyProducts, "TV", "laura", 4));
@@ -281,25 +283,59 @@ console.log(rateProduct(copyProducts, "Laptop", "laura", 10));
 console.log(rateProduct(copyProducts, "Laptop", "santiago", 6));
 console.log(rateProduct(copyProducts, "TV", "santiago", 6));
 console.log(rateProduct(copyProducts, "mobile phone", "laura", 8));
+console.log(rateProduct(copyProducts, "mobile phone", "zwf8md", 3));
 
 console.log("///////////////////");
 console.log("///////// RATING //////////");
 
 /////////calculate the average rating
-/*
-function averageRating(){ 
 
+function averageRating(theobj, producto) {
+  let theaverage = 0;
+  let dividido = 0;
+
+  for (let i = 0; i < theobj.length; i++) {
+    if (theobj[i].name === producto) {
+      for (let j = 0; j < theobj[i].ratings.length; j++) {
+        theaverage += theobj[i].ratings[j].rate;
+        dividido++;
+      }
+    }
+  }
+  console.log(theaverage, dividido);
+  return "the average of " + producto + " is " + theaverage / dividido;
 }
-//console.log("Average", averageRating())
-*/
+
+console.log(averageRating(copyProducts, "Laptop"));
+console.log(averageRating(copyProducts, "TV"));
+console.log(averageRating(copyProducts, "mobile phone"));
 
 //Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
-/*
-function likeProduct(){
 
+function likeProduct(theobj, producto, quien) {
+  let resultado = "";
+  for (let i = 0; i < theobj.length; i++) {
+    if (theobj[i].name === producto) {
+      if (
+        theobj[i].likes.length === 0 &&
+        theobj[i].likes.includes(quien) === false
+      ) {
+        theobj[i].likes.push(quien);
+        resultado = quien + " ha dado like";
+        console.log(theobj[i].likes);
+      } else {
+        theobj[i].likes.splice(theobj[i].likes.indexOf(quien), 1);
+        resultado = quien + " ha quitado su like";
+        console.log(theobj[i].likes);
+      }
+    }
+  }
+  return resultado;
 }
 
+console.log(likeProduct(copyProducts, "TV", "laura"));
+console.log(likeProduct(copyProducts, "TV", "laura"));
 
-
-//console.log("like", likeProduct())
-*/
+console.log(likeProduct(copyProducts, "mobile phone", "santi"));
+console.log(likeProduct(copyProducts, "mobile phone", "santi"));
+console.log(likeProduct(copyProducts, "mobile phone", "santi"));
