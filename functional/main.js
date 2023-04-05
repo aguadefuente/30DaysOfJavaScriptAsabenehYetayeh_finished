@@ -1,7 +1,11 @@
 console.log("hola");
+
+import { countriesObjArr } from "./countriesObjArr.js";
+//console.log("import countriesObjArr:", countriesObjArr);
+console.log("import largo countryArr:", countriesObjArr.length); //250
+
 //HIGHER ORDER FUNCTIONS:
 //1- CALLBACK FUNCTIONS: functions which take other function as a parameter
-
 const callback = (n) => {
   //n=3
   return n ** 2;
@@ -42,7 +46,7 @@ function sayBye() {
 //setTimeout(sayBye, 2000); //LO COMENTÉ PARA QUE NO SE EJECUTE
 
 //FUNCTIONAL PROGRAMING: instead of for loops / we have built-in methods:
-
+//ARRAYS ITERATORS (forEach, map, filter, sort, reduce...)
 /*
 ///////////////////////////////// .FOREACH(): //////////////////////////////
 - Iterate an array elements. No lo modifica
@@ -59,20 +63,16 @@ arr.forEach(function callback(currentValue, index, array) {
   ## array(optional) - array sobre el que se está trabajando
   ### thisArg(opcional) - valor que se usará como this cuando se ejecute el callback
 */
+const numbers = [1, 2, 3, 4, 5];
+numbers.forEach((num) => console.log("numero:", num));
 
 let sum = 0;
-const numbers = [1, 2, 3, 4, 5];
-numbers.forEach((num) => console.log(num));
-console.log(sum);
-
-let sum2 = 0;
 const numbers2 = [1, 2, 3, 4, 5];
-numbers2.forEach((num) => (sum2 += num));
+numbers2.forEach((num) => (sum += num));
+console.log("suma:", sum);
 
 //const g = numbers2.forEach((num) => (sum2 += num));
 //console.log(g); //da undefined
-
-console.log(sum2);
 
 function logArrayElements(element, index) {
   console.log("a[" + index + "] = " + element);
@@ -93,9 +93,8 @@ numeros.forEach(myFunction);
 
 //lo mismo con arrow function
 const numeros2 = [1, 2, 3, 4];
-
 numeros2.forEach((item, index, arr) => {
-  console.log((arr[index] = item * 10));
+  console.log(arr + " index[" + index + "]" + " = " + item * 10);
 });
 
 /*
@@ -120,7 +119,7 @@ console.log(doblados);
 
 /*
 ///////////////////////////////// FILTER() /////////////////////////////
-- Filter out items which full fill filtering conditions 
+- Filter out items which fullfill filtering conditions 
 - return a new array con los elementos que cumplen la condición sino un array vacío []
 - no modifica array original
 */
@@ -140,12 +139,12 @@ console.log(result); //["exuberant", "destruction", "present"]
 console.log(result2); //['exuberant', 'present']
 
 const ages = [32, 33, 16, 40];
-const resultados = ages.filter(checkAdult);
-
 function checkAdult(age) {
+  //el parámetro es el array ages
   return age >= 18;
 }
-console.log(resultados);
+const resultados = ages.filter(checkAdult);
+console.log("filter age", resultados);
 
 //con arrow function
 const probando = ages.filter((age) => age >= 18);
@@ -287,7 +286,6 @@ console.log(productprices);
 //filter() filter out country start with 'E';
 let empiezacon = ejcountries.filter((country) => country.startsWith("E"));
 console.log(empiezacon); //[]
-
 //filter() filter out only prices with values.
 let tienePrecio = ejproducts.filter(
   (producto) => typeof producto.price === "number"
@@ -300,10 +298,75 @@ const ejsuma = ejnumbers.reduce(
 console.log(ejsuma);
 //reduce() to concatenate all the countries and to produce this sentence: Estonia, Finland, Sweden, Denmark, Norway, and IceLand are north European countries
 const ejfrase = ejcountries.reduce((accumulator, currentvalue, i, array) => {
-  const joiner = i === array.length - 1 ? ", and " : ", "; //operador ternario
+  const joiner = i === array.length - 1 ? ", and " : ", "; //operador ternario para trabajar con el index
   return accumulator + joiner + currentvalue;
 });
-console.log(ejfrase);
+console.log(ejfrase + " are north European countries");
+//some() check if some names' length greater than seven in names array
+let greaterThan = ejnames.some((names) => names.length > 7);
+console.log(greaterThan);
+//every() check if all the countries contain the word land
+let ifContain = ejcountries.every((country) => country.includes("land")); //includes is case sensitive
+console.log(ifContain); //false
+//lo mismo con some()
+let ifContain2 = ejcountries.some((country) => country.includes("land"));
+console.log(ifContain2); //true
+//usando RegEx que a diferencia de includes podemos definir sea case insensitive
+let pattern = /land/i;
+let ifContain3 = ejcountries.every((country) => pattern.test(country));
+console.log(ifContain3);
+//find() find the first country containing only six letters
+const findTheFirst = ejcountries.find((country) => country.length === 6);
+console.log(findTheFirst); //Sweden
+//findIndex() find the position of the first country containing only six letters
+const findTheFirst2 = ejcountries.findIndex((country) => country.length === 6);
+console.log(findTheFirst2); //index 1
+//findIndex() find the position of Norway if it doesn't exist in the array you will get -1
+const findPosition = ejcountries.findIndex((country) => country === "Norway");
+console.log(findPosition); //index 3
 
 ///LEVEL 2
+
+//Find the total price of products by chaining two or more array iterators(eg. arr.map(callback).filter(callback).reduce(callback))
+let metraigolosprecios = ejproducts.map((producto) => producto.price);
+console.log(metraigolosprecios);
+
+let filtrandoValores = ejproducts.filter(
+  (producto) => typeof producto.price === "number"
+);
+console.log(filtrandoValores);
+
+let sumoEncadenando = ejproducts
+  .map((producto) => producto.price)
+  .filter((producto) => typeof producto === "number")
+  .reduce((acc, curr) => acc + curr, 0);
+console.log("sumoEncadenando", sumoEncadenando);
+
+//Find the sum of price of products using only reduce(callback))
+const sumoReduciendo = ejproducts.reduce(function (currentTotal, obj) {
+  if (typeof obj.price === "number") {
+    return currentTotal + obj.price;
+  }
+  return currentTotal;
+}, 0);
+console.log("sumoreduciendo", sumoReduciendo);
+
+//Declare a function called categorizeCountries which returns an array of countries which have some common pattern (eg 'land', 'ia', 'island','stan')).
+function categorizeCountries(r) {
+  let theregexp = new RegExp(r, "gi");
+  let category = countriesObjArr
+    .filter((country) => country.name.match(theregexp))
+    .map((country) => country.name);
+  return category;
+}
+
+console.log("categoria", categorizeCountries("land"));
+console.log(categorizeCountries("ia"));
+
+//Create a function which return an array of objects, which is the letter and the number of times the letter use to start with a name of a country.
+
+//Declare a getFirstTenCountries function and return an array of ten countries. Use different functional programming to work on the countries.js array
+//Declare a getLastTenCountries function which which returns the last ten countries in the countries array.
+//Find out which letter is used many times as initial for a country name from the countries array (eg. Finland, Fiji, France etc)-
+
 ///LEVEL 3
