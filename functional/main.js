@@ -364,9 +364,108 @@ console.log("categoria", categorizeCountries("land"));
 console.log(categorizeCountries("ia"));
 
 //Create a function which return an array of objects, which is the letter and the number of times the letter use to start with a name of a country.
+/////////// ver main2: ejercicios hecho con for loop, forEach(): con if() y con ternary operator...etc
 
-//Declare a getFirstTenCountries function and return an array of ten countries. Use different functional programming to work on the countries.js array
-//Declare a getLastTenCountries function which which returns the last ten countries in the countries array.
-//Find out which letter is used many times as initial for a country name from the countries array (eg. Finland, Fiji, France etc)-
+const primerLetra = countriesObjArr.reduce((v1, v2) => {
+  const inicial = v2.name[0];
+  debugger; //esta palabra es para debuggear
+  v1[inicial] = (v1[inicial] || 0) + 1;
+  return v1;
+}, {});
+
+console.log(primerLetra);
+
+//para comprobar que la suma de las letras me da 250 que es la cantidad de los paises
+let sumandoTodo = function () {
+  let contando = 0;
+  for (let letra in primerLetra) {
+    contando += primerLetra[letra];
+  }
+  return contando; //250
+};
+
+console.log("sumandoTodo:", sumandoTodo());
+
+//Declare a getFirstTenCountries function and return an array of ten countries. Use different functional programming
+//slice() no modifica array original
+function getFirstTenCountries(arr) {
+  let ten = arr.slice(0, 10);
+  console.log("ten", ten.length);
+  return ten;
+}
+
+console.log(getFirstTenCountries(countriesObjArr));
+
+//con splice() overwrite original array / por eso primero hacemos una copia y trabajamos sobre ella
+function getFirstTenCountries2(arr) {
+  let copyArr = [...arr]; //podria haberlo encadenado [...arr].splice()
+  let ten2 = copyArr.splice(0, 10);
+  console.log("ten2", ten2.length);
+  return ten2;
+}
+
+console.log(getFirstTenCountries2(countriesObjArr));
+console.log("original array", countriesObjArr.length);
+
+//Declare a getLastTenCountries function which which returns the last ten countries.
+function getLastTenCountries(arr) {
+  let tenlast = arr.slice(arr.length - 10, arr.lehgth);
+  console.log("tenlast", tenlast.length);
+  return tenlast;
+}
+
+console.log(getLastTenCountries(countriesObjArr));
+
+function getLastTenCountries2(arr) {
+  let tenlast2 = [...arr].splice(arr.length - 10, 10); //con splice() hacemos copia para no modificar el array original
+  console.log("tenlast2", tenlast2.length);
+  return tenlast2;
+}
+
+console.log(getLastTenCountries2(countriesObjArr));
+
+//Find out which letter is used many times as initial for a country name from the countries array
+let masVeces = 0;
+let key = null;
+
+for (let letra in primerLetra) {
+  if (primerLetra[letra] > masVeces) {
+    masVeces = primerLetra[letra];
+    key = letra;
+  }
+}
+
+console.log(key + " : " + masVeces);
+
+//VER!!! main2.js otros modo de iterar por objetos que no sea for-in-loop
 
 ///LEVEL 3
+//Sort countries by name, by capital, by population
+function sortBy(x) {
+  let copyCountries = [...countriesObjArr];
+
+  copyCountries.sort((a, b) => {
+    //ascending sort
+    if (a[x] < b[x]) return -1;
+    if (a[x] > b[x]) return 1;
+    return 0;
+  });
+  return copyCountries.slice(0, 5);
+}
+
+console.log("///////////ORDEN POR NOMBRE///////////");
+console.log(sortBy("name"));
+console.log("///////////ORDEN POR CAPITAL///////////");
+console.log(sortBy("capital"));
+console.log("///////////ORDEN POR POPULATION///////////");
+console.log(sortBy("population"));
+
+///////Find the 10 most spoken languages
+
+//console.log(mostSpokenLanguages(countries, 10));
+//console.log(mostSpokenLanguages(countries, 3));
+
+///////create a function which create the ten most populated countries
+
+//console.log(mostPopulatedCountries(countries, 10));
+//console.log(mostPopulatedCountries(countries, 3));
