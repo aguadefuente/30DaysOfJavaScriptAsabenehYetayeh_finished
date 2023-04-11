@@ -77,6 +77,7 @@ paises.forEach((pais) => {
 console.log(contador2);
 
 ////////////////////////////////////REDUCE() - sacado de la web
+const theInitialArr = [];
 const names = paises.reduce((v1, v2) => {
   const startLetter = v2.name[0];
   debugger; //esta palabra es para debuggear
@@ -85,6 +86,9 @@ const names = paises.reduce((v1, v2) => {
 }, {});
 
 console.log(names);
+
+//acá me da el objeto { A: 1, C: 1, B: 2, P: 1 }
+//pero yo necesito un array de objetos [{A:1}, {C:1}, {B:2}, {P:1}]
 
 //////////////////////////// MODOS DE ITERAR OBJETOS ///////////////////////
 let perro = {
@@ -139,3 +143,35 @@ console.log("Object.entries() + with forEach");
 Object.entries(perro).forEach(([key, value]) => {
   console.log(value);
 });
+
+//
+console.log(Object.entries(names));
+console.log(Object.keys(names));
+console.log(Object.values(names));
+
+let probandosisale = Object.entries(names).sort();
+console.log(probandosisale);
+
+let probandosortear = Object.entries(names).sort((a, b) => {
+  //ascending sort
+  if (a[1] < b[1]) return 1;
+  if (a[1] > b[1]) return -1;
+  return 0;
+});
+
+console.log(probandosortear);
+
+console.log(names);
+
+let thearr = [];
+let haciendoloobjetoarr = Object.entries(names);
+haciendoloobjetoarr.map(function (arr) {
+  return thearr.push({ [arr[0]]: arr[1] }); //notaaaaa!!!! => LA KEY LA TENGO QUE ENMARCAR EN [] como vemos [arr[0]]
+});
+console.log(thearr);
+
+let objetoagain = {};
+for (let letter of thearr) {
+  objetoagain = { ...objetoagain, ...letter };
+}
+console.log(objetoagain);

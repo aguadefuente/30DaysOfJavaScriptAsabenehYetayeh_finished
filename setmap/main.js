@@ -173,7 +173,61 @@ for (let country of countriesObjArr) {
 console.log(howMany.size); //112
 
 //Use the countries data to find the 10 most spoken languages:
-function mostSpokenLanguages(arr, n) {}
 
-console.log(mostSpokenLanguages(countriesObjArr, 10));
-console.log(mostSpokenLanguages(countriesObjArr, 3));
+//console.log(mostSpokenLanguages(countriesObjArr, 10));
+//console.log(mostSpokenLanguages(countriesObjArr, 3));
+
+//primero voy a hacer un array con todos los arrays del countryObjArr
+let thelanguages = [];
+for (let country of countriesObjArr) {
+  for (let lang of country.languages) {
+    thelanguages.push(lang);
+  }
+}
+console.log(thelanguages.length);
+//console.log(thelanguages);
+
+//ya tenemos un array con todos los idiomas - algunos están mas de una vez.
+//por eso ahora hacemos un set() para que sólo quede uno de cada idioma
+const setdeidiomas = new Set(thelanguages);
+console.log(setdeidiomas.size);
+
+const elarraycontador = [];
+const contador = {};
+
+//recorremos el set()
+for (let l of setdeidiomas) {
+  //filtramos según el idioma esté repetido
+  const arrayderepetidos = thelanguages.filter((lng) => lng === l);
+  console.log(arrayderepetidos); //ej["Englis", "English","English"...]
+  //hacemos un push
+  //elarraycontador.push({ lang: l, count: arrayderepetidos.length });
+  elarraycontador.push({ [l]: arrayderepetidos.length });
+}
+
+console.log(elarraycontador);
+
+/*
+const languages = [
+  'English',
+  'Finnish',
+  'English',
+  'French',
+  'Spanish',
+  'English',
+  'French',
+]
+const langSet = new Set(languages)
+console.log(langSet) // Set(4) {"English", "Finnish", "French", "Spanish"}
+console.log(langSet.size) // 4
+
+const counts = []
+const count = {}
+
+for (const l of langSet) {
+  const filteredLang = languages.filter((lng) => lng === l)
+  console.log(filteredLang) // ["English", "English", "English"]
+  counts.push({ lang: l, count: filteredLang.length })
+}
+console.log(counts)
+*/

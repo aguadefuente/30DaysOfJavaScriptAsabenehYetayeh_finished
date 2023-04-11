@@ -373,7 +373,7 @@ const primerLetra = countriesObjArr.reduce((v1, v2) => {
   return v1;
 }, {});
 
-console.log(primerLetra);
+console.log("array de primer letra", primerLetra);
 
 //para comprobar que la suma de las letras me da 250 que es la cantidad de los paises
 let sumandoTodo = function () {
@@ -435,7 +435,7 @@ for (let letra in primerLetra) {
   }
 }
 
-console.log(key + " : " + masVeces);
+console.log("letra mas usada es:", key + " : " + masVeces); //letra mas usada es: S : 33
 
 //VER!!! main2.js otros modo de iterar por objetos que no sea for-in-loop
 
