@@ -183,19 +183,10 @@ console.log(
 );
 
 //sortear usando el array de objetos [ { A: 1 }, { C: 1 }, { B: 2 }, { P: 1 } ]
-console.log(thearr);
-
-const quesera = [];
-for (let elem of thearr) {
-  quesera.push(Object.keys(elem));
-}
-console.log(quesera);
-
-//console.log(thearr[0][quesera[0]]);
-
-for (let i = 0; i < thearr.length; i++) {
-  console.log(thearr[i][quesera[i]]);
-}
+console.log("el original", thearr);
+console.log("los valores", Object.values(thearr[0])); //agarro el valor del primer objeto del array
+console.log("las keys", Object.keys(thearr));
+console.log("entres", Object.entries(thearr));
 
 thearr.sort((a, b) => Object.values(b)[0] - Object.values(a)[0]);
-console.log(thearr);
+console.log("el ordenado", thearr);
