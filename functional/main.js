@@ -460,12 +460,124 @@ console.log(sortBy("capital"));
 console.log("///////////ORDEN POR POPULATION///////////");
 console.log(sortBy("population"));
 
-///////Find the 10 most spoken languages
+///////create a function which create the ten most populated countries
+//compruebo si todos los elementos son numer
+const areAllNumber = countriesObjArr.every(
+  (country) => typeof country.population === "number"
+); // Are all numbers?
+console.log(areAllNumber); //true
+//hacemos una copia del array porque sort() lo modificaria
+let countriescopy = [...countriesObjArr];
 
+function mostPopulatedCountries(arr, n) {
+  return arr
+    .map((country) => ({
+      //para que me return un objeto {} tengo que abrir primero () sino no funciona, lo toma como otra función
+      name: country.name, //debo especificar la key:value - un objeto siempre tiene key:value
+      population: country.population,
+    }))
+    .sort((a, b) => {
+      //descending sort
+      if (a.population < b.population) return 1;
+      if (a.population > b.population) return -1;
+      return 0;
+    })
+    .slice(0, n);
+}
+
+console.log("los 10 mas poblados ", mostPopulatedCountries(countriescopy, 10));
+console.log("los 3 mas poblados ", mostPopulatedCountries(countriescopy, 3));
+
+///////Find the 10 most spoken languages
+//haremos un objeto contador
+
+//function mostSpokenLanguages(arr, n) {}
 //console.log(mostSpokenLanguages(countries, 10));
 //console.log(mostSpokenLanguages(countries, 3));
+/*
+[ 
+  {country: 'English',count:91},
+  {country: 'French',count:45},
+  ...
+]
+*/
 
-///////create a function which create the ten most populated countries
+/*
+function countLetters(arr) {
+  //Create the object which will store the occurrences
+  const count = {};
 
-//console.log(mostPopulatedCountries(countries, 10));
-//console.log(mostPopulatedCountries(countries, 3));
+  //Loop over the initial letters of the word
+  for (let i = 0; i < arr.length; i++) {
+    const letter = arr[i].name[0];
+
+    //if the property isn't in the object, it means that the letter is a new one and we'll create this property and assign it the value 1
+    if (!count[letter]) {
+      count[letter] = 1; //ej) A:1 //adding a value to a key in an object
+
+      //else, it means that the property is already there and we just increment it by 1
+    } else {
+      count[letter]++; //ej) A:1+1
+    }
+  }
+
+  return count;
+}
+
+console.log("contarletras for loop:", countLetters(paises));
+
+
+
+
+*/
+
+//PRACTICANDO
+const arrayPrueba = [
+  {
+    name: "australia",
+    languages: ["English", "Uzbek", "Spanish"],
+  },
+  {
+    name: "Chile",
+    languages: ["Spanish", "Quechua", "German"],
+  },
+  {
+    name: "Albania",
+    languages: ["English"],
+  },
+  {
+    name: "Rusia",
+    languages: ["Russian", "Uzbek"],
+  },
+];
+
+let objetoContador = {};
+for (let i = 0; i < arrayPrueba.length; i++) {
+  const current = arrayPrueba[i];
+
+  for (let j = 0; j < current.languages.length; j++) {
+    let idioma = current.languages[j];
+    if (!objetoContador.hasOwnProperty(idioma)) {
+      objetoContador[idioma] = 1;
+    } else {
+      objetoContador[idioma]++;
+    }
+  }
+}
+console.log(objetoContador);
+
+let languagearr = [];
+Object.entries(objetoContador).map(function (arr) {
+  languagearr.push({ language: arr[0], count: arr[1] }); //notaaaaa!!!! => LA KEY LA TENGO QUE ENMARCAR EN [] como vemos [arr[0]]
+});
+
+console.log(languagearr);
+
+let sortlang = languagearr.sort((a, b) => {
+  //descending sort
+  if (a.count < b.count) return 1;
+  if (a.count > b.count) return -1;
+  return 0;
+});
+
+console.log(sortlang);

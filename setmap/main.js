@@ -173,11 +173,7 @@ for (let country of countriesObjArr) {
 console.log(howMany.size); //112
 
 //Use the countries data to find the 10 most spoken languages:
-
-//console.log(mostSpokenLanguages(countriesObjArr, 10));
-//console.log(mostSpokenLanguages(countriesObjArr, 3));
-
-//primero voy a hacer un array con todos los arrays del countryObjArr
+/////primero voy a hacer un array con todos los arrays del countryObjArr
 let thelanguages = [];
 for (let country of countriesObjArr) {
   for (let lang of country.languages) {
@@ -206,28 +202,14 @@ for (let l of setdeidiomas) {
 }
 
 console.log(elarraycontador);
+//hacemos una copia del elarraycontador porque .sort() lo modifica
+let elarraycontadorcopy = [...elarraycontador];
 
-/*
-const languages = [
-  'English',
-  'Finnish',
-  'English',
-  'French',
-  'Spanish',
-  'English',
-  'French',
-]
-const langSet = new Set(languages)
-console.log(langSet) // Set(4) {"English", "Finnish", "French", "Spanish"}
-console.log(langSet.size) // 4
-
-const counts = []
-const count = {}
-
-for (const l of langSet) {
-  const filteredLang = languages.filter((lng) => lng === l)
-  console.log(filteredLang) // ["English", "English", "English"]
-  counts.push({ lang: l, count: filteredLang.length })
+function mostSpokenLanguages(array, n) {
+  return array
+    .sort((a, b) => Object.values(b)[0] - Object.values(a)[0])
+    .slice(0, n);
 }
-console.log(counts)
-*/
+
+console.log(mostSpokenLanguages(elarraycontadorcopy, 10));
+console.log(mostSpokenLanguages(elarraycontadorcopy, 3));
