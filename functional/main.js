@@ -489,95 +489,39 @@ console.log("los 10 mas poblados ", mostPopulatedCountries(countriescopy, 10));
 console.log("los 3 mas poblados ", mostPopulatedCountries(countriescopy, 3));
 
 ///////Find the 10 most spoken languages
-//haremos un objeto contador
+//haremos un objeto contador - hacemos una copia del objeto con el que trabajaremos
+let countriesObjectcopy = [...countriesObjArr];
 
-//function mostSpokenLanguages(arr, n) {}
-//console.log(mostSpokenLanguages(countries, 10));
-//console.log(mostSpokenLanguages(countries, 3));
-/*
-[ 
-  {country: 'English',count:91},
-  {country: 'French',count:45},
-  ...
-]
-*/
-
-/*
-function countLetters(arr) {
-  //Create the object which will store the occurrences
-  const count = {};
-
-  //Loop over the initial letters of the word
-  for (let i = 0; i < arr.length; i++) {
-    const letter = arr[i].name[0];
-
-    //if the property isn't in the object, it means that the letter is a new one and we'll create this property and assign it the value 1
-    if (!count[letter]) {
-      count[letter] = 1; //ej) A:1 //adding a value to a key in an object
-
-      //else, it means that the property is already there and we just increment it by 1
-    } else {
-      count[letter]++; //ej) A:1+1
-    }
-  }
-
-  return count;
-}
-
-console.log("contarletras for loop:", countLetters(paises));
-
-
-
-
-*/
-
-//PRACTICANDO
-const arrayPrueba = [
-  {
-    name: "australia",
-    languages: ["English", "Uzbek", "Spanish"],
-  },
-  {
-    name: "Chile",
-    languages: ["Spanish", "Quechua", "German"],
-  },
-  {
-    name: "Albania",
-    languages: ["English"],
-  },
-  {
-    name: "Rusia",
-    languages: ["Russian", "Uzbek"],
-  },
-];
-
-let objetoContador = {};
-for (let i = 0; i < arrayPrueba.length; i++) {
-  const current = arrayPrueba[i];
+let contando = {};
+for (let i = 0; i < countriesObjectcopy.length; i++) {
+  const current = countriesObjectcopy[i];
 
   for (let j = 0; j < current.languages.length; j++) {
     let idioma = current.languages[j];
-    if (!objetoContador.hasOwnProperty(idioma)) {
-      objetoContador[idioma] = 1;
+    if (!contando.hasOwnProperty(idioma)) {
+      contando[idioma] = 1;
     } else {
-      objetoContador[idioma]++;
+      contando[idioma]++;
     }
   }
 }
-console.log(objetoContador);
+//console.log("el contando", contando);
 
-let languagearr = [];
-Object.entries(objetoContador).map(function (arr) {
-  languagearr.push({ language: arr[0], count: arr[1] }); //notaaaaa!!!! => LA KEY LA TENGO QUE ENMARCAR EN [] como vemos [arr[0]]
-});
+function mostSpokenLanguages(arr, n) {
+  let languagearr = [];
+  Object.entries(arr).map(function (elem) {
+    languagearr.push({ language: elem[0], count: elem[1] });
+  });
 
-console.log(languagearr);
+  return languagearr
+    .sort((a, b) => {
+      //descending sort
+      if (a.count < b.count) return 1;
+      if (a.count > b.count) return -1;
+      return 0;
+    })
+    .slice(0, n);
+}
 
-let sortlang = languagearr.sort((a, b) => {
-  //descending sort
-  if (a.count < b.count) return 1;
-  if (a.count > b.count) return -1;
-  return 0;
-});
-
-console.log(sortlang);
+console.log("los 10 idiomas mas hablados", mostSpokenLanguages(contando, 10));
+console.log("los 3 idiomas mas hablados", mostSpokenLanguages(contando, 3));
