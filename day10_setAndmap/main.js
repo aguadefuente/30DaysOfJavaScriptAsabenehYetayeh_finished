@@ -1,6 +1,6 @@
 console.log("Set-Map práctica");
 
-import { countriesObjArr } from "/home/laura/workspace/Apuntes/functional/countriesObjArr.js";
+import { countriesObjArr } from "../day9_functional/countriesObjArr.js";
 console.log(countriesObjArr.length);
 ////////////////////// SET: a collection of unique values ///////////////////
 

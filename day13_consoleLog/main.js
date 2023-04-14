@@ -130,4 +130,4 @@ console.log(users2);
 console.groupEnd();
 
 //console.clear() ME LIMPIA LA CONSOLA!!!
-console.clear();
+//console.clear();
