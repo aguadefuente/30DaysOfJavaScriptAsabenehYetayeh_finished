@@ -1,21 +1,158 @@
-console.info("Promises-Async/Await-FetchAPI");
-//PROMISE:
 /*
-- a way to handle asynchronous operations in JavaScript
-- instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+////////////////  CALLBACKS AND ASYNCHRONOUS JavaScript //////////////////
+Function sequence: 
+JavaScript functions are executed in the sequence they are called. 
+Not in the sequence they are defined.
+-----------
+function myFirst() {
+  myDisplayer("Hello");
+}
 
-A Promise is in one of these states:
-> pending: initial state, neither fulfilled nor rejected.
-> fulfilled: meaning that the operation completed successfully.
-> rejected: meaning that the operation failed.
+function mySecond() {
+  myDisplayer("Goodbye");
+}
 
-syntax-->
-const promise = new Promise((resolve, reject) => {
-  resolve('success')
-  reject('failure')
-})
+mySecond();
+myfirst();
+-------------
 
+Sometimes you would like to have better control over when to execute a function.
+Suppose you want to do a calculation, and then display the result.
+Using a CALLBACK, you could call the calculator function (myCalculator) with a callback (myCallback), and let the calculator function run the callback after the calculation is finished:
+----------
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);
+-----------
+
+In the example above, myDisplayer is a called a callback function.
+It is passed to myCalculator() as an argument.
+
+EL EJEMPLO ANTERIOR ES A MODO EXPLICATIVO Y MUY SIMPLIFICADO. DONDE VEMOS MEJOR 
+LOS CALLBACKS ES EN LAS FUNCIONES ASINCRÓNICAS DONDE UNA FUNCIÓN DEBE ESPERAR A OTRA
+PARA EJECUTARSE
+
+Callbacks are most often used with asynchronous functions. Ejemplos --->
+
+1 - SETTIMEOUT()
+------
+setTimeout(myFunction, 3000);
+function myFunction() {
+  document.getElementById("demo").innerHTML = "I love You !!";
+}
+------
+In the example above, myFunction is used as a callback.
+myFunction is passed to setTimeout() as an argument.
+3000 is the number of milliseconds before time-out, so myFunction() will be called after 3 seconds.
+
+2 - SETINTERVAL()
+------
+setInterval(myFunction, 1000);
+function myFunction() {
+  let d = new Date();
+  document.getElementById("demo").innerHTML=
+  d.getHours() + ":" +
+  d.getMinutes() + ":" +
+  d.getSeconds();
+}
+-------
+In the example above, myFunction is used as a callback.
+myFunction is passed to setInterval() as an argument.
+1000 is the number of milliseconds between intervals, so myFunction() will be called every second.
+
+NOTA!!!! 
+Asynchronus programmes are difficult to write and difficult to debug.
+Most modern asynchronous JavaScript methods DON'T USE CALLBACK!!! 
+Instead, is solved using PROMISES!!!
+
+"Producing code" is code that can take some time
+"Consuming code" is code that must wait for the result
+A PROMISE IS A JSCRIPT OBJECT that links producing code and consuming code
+
+SYNTAX --->
+------
+let myPromise = new Promise(function(myResolve, myReject) {
+//"Producing Code" (May take some time)
+  myResolve(); // when successful
+  myReject();  // when error
+});
+
+//"Consuming Code" (Must wait for a fulfilled Promise) - .then() tiene dos argumentos a callback for success y a callback for error - son optionales. Podemos usar uno y otro o ambos
+
+myPromise.then(
+  function(value) { code if successful },
+  function(error) { code if some error }
+);
+-------
+When the producing code obtains the result, it should call one of the two callbacks
+myResolve() if success
+myReject() if error
+
+The Promise object supports two properties: state and result.
+myPromise.state	-->   myPromise.result
+"pending"	    -----   undefined
+"fulfilled"	  -----   value
+"rejected"	  -----   error
+
+ASYNC?AWAIT: make promises easier to write"
+- async > makes a function return a Promise
+- await > makes a function wait for a Promise
+------
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+async function myFunction() {
+  return "Hello";
+}
+myFunction().then(
+  function(value) {myDisplayer(value);}
+  function(error) {myDisplayer(error);}
+);
+
+//Is the same as:
+
+function myFunction() {
+  return Promise.resolve("Hello");
+}
+myFunction().then(
+  function(value) {myDisplayer(value);}
+  function(error) {myDisplayer(error);}
+);
+
+------
+The AWAIT keyword can only be used inside an async function.
+makes the function pause the execution and wait for a resolved promise before
+
+How do we access the value from the promise? To access the value from the promise, we will use the keyword await.
+
+const square = async function (n) {
+  return n * n
+}
+const value = await square(2)
+console.log(value)
+
+Async and await go together, one can not exist without the other
+
+//otro ejemplo
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve) {
+    setTimeout(function() {resolve("I love You !!");}, 3000);
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+myDisplay();
 */
+
+/// EJERCICIOS 30-days-JScript-Challenge
+console.info("Promises-Async/Await-FetchAPI");
 
 import fetch from "node-fetch";
 
