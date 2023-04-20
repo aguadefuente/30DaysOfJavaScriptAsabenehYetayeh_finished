@@ -363,6 +363,19 @@ function categorizeCountries(r) {
 console.log("categoria", categorizeCountries("land"));
 console.log(categorizeCountries("ia"));
 
+/*//otro ejemplo con .includes y sin regex
+function categorizeCountries(pattern) {
+  const categorized = countriesObjArr.filter((elem) =>
+    elem.name.toLowerCase().includes(pattern)
+  );
+  return categorized.map((result) => result.name);
+}
+
+console.log(categorizeCountries("land"));
+console.log(categorizeCountries("stan"));
+
+*/
+
 //Create a function which return an array of objects, which is the letter and the number of times the letter use to start with a name of a country.
 /////////// ver main2: ejercicios hecho con for loop, forEach(): con if() y con ternary operator...etc
 
@@ -396,6 +409,11 @@ function getFirstTenCountries(arr) {
 
 console.log(getFirstTenCountries(countriesObjArr));
 
+/*
+const firstTen = countriesObjArr.slice(0, 10).map((elem) => elem.name);
+console.log(firstTen);
+*/
+
 //con splice() overwrite original array / por eso primero hacemos una copia y trabajamos sobre ella
 function getFirstTenCountries2(arr) {
   let copyArr = [...arr]; //podria haberlo encadenado [...arr].splice()
@@ -406,6 +424,12 @@ function getFirstTenCountries2(arr) {
 
 console.log(getFirstTenCountries2(countriesObjArr));
 console.log("original array", countriesObjArr.length);
+
+/*NOTA: TAMBIÉN PODEMOS HACER COPIAS (no sólo con spread operator [...arr])
+sino también con .splice() ej) const newCountries = countriesObjArr.slice();
+RECORDAR QUE ESTAS COPIAS SON REFERENCIAS AL ORIGINAL - quiere decir que si modifico el original se modifica la copia
+por eso hay hacks para hacer deep-clones y que se logre una copia verdadera y no sólo por referencia!!! 
+*/
 
 //Declare a getLastTenCountries function which which returns the last ten countries.
 function getLastTenCountries(arr) {
@@ -423,6 +447,11 @@ function getLastTenCountries2(arr) {
 }
 
 console.log(getLastTenCountries2(countriesObjArr));
+
+/*
+const lastTen = countriesObjArr.slice(-10).map((elem) => elem.name);
+console.log(lastTen);
+*/
 
 //Find out which letter is used many times as initial for a country name from the countries array
 let masVeces = 0;

@@ -245,7 +245,7 @@ function convertArrayToObject(arr) {
 }
 
 console.log(convertArrayToObject(students));
-/*
+/* output ->
  [
       {
         name: 'David',
@@ -258,6 +258,18 @@ console.log(convertArrayToObject(students));
         scores: [85, 80,85,80]
       }
     ]
+*/
+
+/*//mismo ejercicio sin hacer .push con .map
+const convertArrayToObject2 = (param) => {
+  return param.map((item) => {
+    const [name, skills, scores] = item;
+    return { name, skills, scores };
+  });
+};
+
+console.log(convertArrayToObject2(students));
+
 */
 
 const studentObject = {
@@ -278,6 +290,14 @@ const studentObject = {
     dataScience: ["Python", "R", "D3.js"],
   },
 };
+
+/*
+NOTA UN HACK PARA HACER UNA COPIA QUE NO SEA REFERENCIA AL OBJETO COPIADO
+lo pasamos a string y luego con JSON.parse lo vuelo objeto.
+
+const copied = JSON.parse(JSON.stringify(studentObject)); 
+*/
+
 //Copy the student object to newStudent without mutating the original object.
 //In the new object add Bootstrap with level 8 to the frontend skill sets
 const newStudentObject = {
