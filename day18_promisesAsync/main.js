@@ -90,6 +90,14 @@ myPromise.then(
   function(value) { code if successful },
   function(error) { code if some error }
 );
+
+//SINO DE ESTE OTRO MODO CON .THEN Y .CATCH
+myPromise
+.then(result => {
+    console.log(result)
+  })
+.catch(error => console.log(error))
+
 -------
 When the producing code obtains the result, it should call one of the two callbacks
 myResolve() if success
@@ -127,6 +135,13 @@ myFunction().then(
   function(error) {myDisplayer(error);}
 );
 
+//o en ambos casos podemos usar .then y .catch
+myFunction
+.then(result => {
+    console.log(result)
+  })
+.catch(error => console.log(error))
+
 ------
 The AWAIT keyword can only be used inside an async function.
 makes the function pause the execution and wait for a resolved promise before
@@ -140,16 +155,34 @@ const value = await square(2)
 console.log(value)
 
 Async and await go together, one can not exist without the other
+-----
 
-//otro ejemplo
-async function myDisplay() {
-  let myPromise = new Promise(function(resolve) {
-    setTimeout(function() {resolve("I love You !!");}, 3000);
-  });
-  document.getElementById("demo").innerHTML = await myPromise;
+FETCH
+//con promise
+const url = 'https://restcountries.com/v2/all' // countries api
+fetch(url)
+  .then(response => response.json()) // accessing the API data as JSON
+  .then(data => {
+    // getting the data
+    console.log(data)
+  })
+  .catch(error => console.error(error)) // handling error if something wrong happens
+
+//con async-await
+const fetchData = async () => {
+  try {
+    const response = await fetch(url)
+    const countries = await response.json()
+    console.log(countries)
+  } catch (err) {
+    console.error(err)
+  }
 }
-myDisplay();
-*/
+console.log('===== async and await')
+fetchData()
+
+NOTA: VEMOS QUE CON PROMISE USAMOS .THEN .CATCH Y COMO ASYNC/AWAIT USAMOS TRY/CATCH
+  */
 
 /// EJERCICIOS 30-days-JScript-Challenge
 console.info("Promises-Async/Await-FetchAPI");
@@ -175,12 +208,13 @@ fetch(url)
         languages: country.languages.map((l) => l.name),
       };
     });
-    console.table(info.splice(0, 3)); //or console.log(info.splice(0, 3))
+    console.table("fetch paises ", info.splice(0, 3)); //or console.log(info.splice(0, 3))
   })
   .catch((error) => console.error(error)); // handling error if something wrong happens
 
 /////////////////////////////////////LEVEL 2:
 //Print out all the cat names in to catNames variable.
+
 const catsAPI = "https://api.thecatapi.com/v1/breeds";
 
 const fetchData = async () => {
@@ -201,10 +235,11 @@ const fetchData = async () => {
 
 fetchData();
 
-/////////////////////////////////////////LEVEL 3
+////////////////////////////////  LEVEL 3
 //Read the cats api and find the average weight of cat in metric unit.
 
-/* //Desmembrando el problema
+/* 
+//Desmembrando el problema
 const prueba = "4 - 5"; //
 console.log(prueba) //es un string 
 
@@ -327,7 +362,7 @@ const fetchData5 = async () => {
     console.log(theArrLanguage);
 
     const howMany = new Set(theArrLanguage);
-    console.log(howMany.size);
+    console.log("la cantidad de idomas es: ", howMany.size);
   } catch (err) {
     console.error(err);
   }
