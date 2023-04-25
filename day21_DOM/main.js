@@ -100,9 +100,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.querySelectorAll("p")[2].classList.add("class_classList.add");
 
   //LEVEL 2
-  //Change stye of each paragraph using JavaScript(eg. color, background, border, font-size, font-family)
-  //Select all paragraphs and loop through each elements and give the first and third paragraph a color of green, and the second and the fourth paragraph a red color
-  //Set text content, id and class to each paragraph
+  //Change style of each paragraph using JavaScript(eg. color, background, border, font-size, font-family)
+  allparagraph.forEach((elem, i) => {
+    elem.style.fontSize = "20px";
+    if (i % 2 === 0) {
+      elem.style.color = "red";
+    } else {
+      elem.style.color = "blue";
+    }
+  });
+
+  //LEVEL 3 en main2.js
 
   /////// the end ////
 });
