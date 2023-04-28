@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //cada Challenge tiene un background distinto según /completed,ongoing,coming
   items.forEach((item) => {
     item.style.listStyle = "none";
+    item.style.fontSize = "16px";
     item.style.margin = "3px";
     item.style.padding = "6px";
     item.style.display = "flex";
@@ -134,4 +135,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
   dateparagraph.style.padding = "10px";
   dateparagraph.style.margin = "0 auto";
   dateparagraph.style.textAlign = "center";
+  dateparagraph.style.fontSize = "16px";
 });
