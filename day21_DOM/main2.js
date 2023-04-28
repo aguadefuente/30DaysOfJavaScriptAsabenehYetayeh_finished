@@ -85,13 +85,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //cada Challenge tiene un background distinto según /completed,ongoing,coming
   items.forEach((item) => {
     item.style.listStyle = "none";
-    item.style.margin = "3px auto";
-    item.style.width = "650px";
-    item.style.height = "40px";
-
+    item.style.margin = "3px";
+    item.style.padding = "6px";
     item.style.display = "flex";
     item.style.justifyContent = "center";
     item.style.alignItems = "center";
+    item.style.width = "80%";
 
     if (item.textContent.includes("Done")) {
       item.style.backgroundColor = "rgb(0 128 0 / 70%)"; //green
@@ -107,15 +106,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //fin del Tutorial
 
   //Ahora le voy a dar formato al body y demás elementos para que se vea mejor
-  body.style.textAlign = "center";
+
   body.style.fontFamily = "sans-serif";
+
+  body.minHeight = "100vh";
+
+  body.style.display = "flex";
+  body.style.flexDirection = "column";
+  body.style.alignItems = "center";
+  body.style.justifyContent = "center";
+  body.style.gap = "4rem";
+
+  ul.style.padding = "0px";
+  ul.style.display = "flex";
+  ul.style.flexDirection = "column";
+  ul.style.alignItems = "center";
 
   veinteveinte.style.fontSize = "6rem";
   veinteveinte.style.fontWeight = "lighter";
 
-  subtitle.style.textDecoration = "underline";
+  title.style.textAlign = "center";
 
-  dateparagraph.style.width = "350px";
+  subtitle.style.textDecoration = "underline";
+  subtitle.style.textAlign = "center";
+
+  dateparagraph.style.width = "40%";
   dateparagraph.style.padding = "10px";
   dateparagraph.style.margin = "0 auto";
+  dateparagraph.style.textAlign = "center";
 });
