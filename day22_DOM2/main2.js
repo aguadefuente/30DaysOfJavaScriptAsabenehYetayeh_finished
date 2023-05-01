@@ -1,3 +1,4 @@
+//SEGUNDO EJERCICIO: COUNTRY DISPLAY
 //Use the countries array to display all the countries
 document.addEventListener("DOMContentLoaded", function (event) {
   const countries = [
