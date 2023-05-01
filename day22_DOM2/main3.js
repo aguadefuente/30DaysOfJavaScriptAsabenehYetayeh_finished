@@ -319,5 +319,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
        border-radius: 25px;
        background-color: ${backgroundKeyColor()};
    `;
-  }
+  } //para que los colores de las pastilas se genere aleatoriamente y sean distintos colores
 });
