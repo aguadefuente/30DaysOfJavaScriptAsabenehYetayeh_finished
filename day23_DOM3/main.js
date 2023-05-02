@@ -109,6 +109,7 @@ const theInput = document.querySelector("#divNumber");
 theInput.style.width = "250px";
 theInput.style.padding = "10px";
 theInput.style.border = "1px solid black";
+theInput.style.margin = "4px";
 
 theInput.addEventListener("focus", function () {
   this.style.border = "2px solid rgb(0 187 0)";
@@ -126,14 +127,16 @@ btn.style.fontSize = "11px";
 const alert = document.createElement("p");
 document.body.insertBefore(alert, theInput);
 //agregamos el evento click y sus methods .value
+let pattern = /\D/g; //regex para lo que no es dígito
 btn.addEventListener("click", function () {
-  const quantity = Number.parseInt(theInput.value); //agarramos el valor del input y como el input type es text lo parseamos - y nos dará un número o NaN si ingresamos una letra
-  theContainer.innerHTML = "";
-  if (isNaN(quantity)) {
+  const quantity = theInput.value; //agarramos el valor del input y como el input type es text lo parseamos - y nos dará un número o NaN si ingresamos una letra
+  theContainer.innerHTML = ""; //está vacío hasta que se creen los números
+  if (pattern.test(quantity)) {
     alert.textContent = "You have to enter a number";
     alert.style.color = "red";
     alert.style.fontSize = "12px";
   } else {
+    Number.parseInt(quantity);
     alert.textContent = "";
     //hacemos un for-loop para crear los div en la cantidad que hayamos ingresado en el input
     for (let i = 0; i < quantity; i++) {
