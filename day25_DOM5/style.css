@@ -15,6 +15,8 @@ body {
     box-sizing: border-box; /*defines how the width and height of an element are calculated*/
     min-height: 100vh;
 
+    color: #5c5c5c;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,12 +36,10 @@ body {
 h2 {
     color: rgba(252, 163, 9, 0.911);;
     font-size: 5.5rem;
-    /*margin: 5rem 0 2rem;*/
     font-weight: 500;
 }
 
 h3 {
-    color: #5c5c5c;;
     font-size: 2rem;
     font-weight: 400;
 }
@@ -48,9 +48,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
     gap: 2rem;
-    width: 60%;
+    width: 100%;
 }
 
 .graph-buttons {
@@ -63,7 +62,7 @@ main {
 button {
     background-color:rgba(246 156 0 / 91%);
     padding: 1rem;
-    color: black;
+    color: #373737;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 0.4rem;
@@ -79,4 +78,46 @@ button:hover {
 button:active{
     background-color:rgba(246 156 0 / 91%);
     box-shadow: none;
+}
+
+/*Stat graph*/
+.graph_background {
+    width: 100%;
+    height: 100vh;
+    background-color: #eaeaea;
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+/* esto aparece al apretar los botones  */
+.graphs-stat{
+    width: 80%;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.graph-stat--name {
+    height: 2rem;
+    width: 20rem;
+    text-align: right;
+}
+
+.graph-stat--bar {
+    height: 3.5rem;
+    flex-grow: 1;
+  
+    /*background: linear-gradient(to right, rgb(255 77 15) 75%,#ffffff 75%);*/
+    border-radius: 0.4rem;
+}
+
+.graph-stat--number {
+    height: 2rem;
+    width: 20rem;
 }
