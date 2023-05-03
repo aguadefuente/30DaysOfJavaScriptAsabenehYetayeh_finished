@@ -61,6 +61,46 @@ console.log(result);
 const prueba = copy[0].name;
 console.log(prueba);
 
+///getting 10 most spoken languages
+/*
+let countriesObjectcopy = [...countriesObjArr];
+
+let contando = {};
+for (let i = 0; i < countriesObjectcopy.length; i++) {
+  const current = countriesObjectcopy[i];
+
+  for (let j = 0; j < current.languages.length; j++) {
+    let idioma = current.languages[j];
+    if (!contando.hasOwnProperty(idioma)) {
+      contando[idioma] = 1;
+    } else {
+      contando[idioma]++;
+    }
+  }
+}
+//console.log("el contando", contando);
+
+function mostSpokenLanguages(arr, n) {
+  let languagearr = [];
+  Object.entries(arr).map(function (elem) {
+    languagearr.push({ language: elem[0], count: elem[1] });
+  });
+
+  return languagearr
+    .sort((a, b) => {
+      //descending sort
+      if (a.count < b.count) return 1;
+      if (a.count > b.count) return -1;
+      return 0;
+    })
+    .slice(0, n);
+}
+
+console.log("los 10 idiomas mas hablados", mostSpokenLanguages(contando, 10));
+
+
+*/
+
 ///////////////  EVENT LISTENERS -- BOTONES
 //agarramos los botones y títulos que aparecerán al apretar el botón
 const population_btn = document.querySelector(".population");
