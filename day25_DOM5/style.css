@@ -81,16 +81,16 @@ button:active{
 }
 
 /*Stat graph*/
-.outerWrapper {
+.outerWrapper, .background {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #eaeaea;
     display: flex;
     
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 /* esto aparece al apretar los botones  */
@@ -115,6 +115,11 @@ button:active{
   
     /*background: linear-gradient(to right, rgb(255 77 15) 75%,#ffffff 75%);*/
     border-radius: 0.4rem;
+
+    color:rgba(246 156 0 / 91%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .number {

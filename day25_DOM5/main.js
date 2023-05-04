@@ -110,9 +110,10 @@ const lang_statNum = document.querySelector(".graph_lang-stat--number");
 // >>>>>>>> POBLACIÓN
 pop_statName.textContent = "World";
 pop_statNum.textContent = Intl.NumberFormat("en-US").format(worldPopulation); //para formatear el número con separador de miles. Se le coloca el país que querés usar como convención - acá utilicé ingles de USA - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
-pop_statbar.style.display = "inline";
+pop_statbar.style.display = "flex";
 pop_statbar.style.background =
   "linear-gradient(to right, rgb(255 77 15) 100%,#ffffff 100%)";
+pop_statbar.textContent = "100%";
 
 for (let i = 0; i < result_population.length; i++) {
   let clone = pop_statWrapper.cloneNode(true);
@@ -122,18 +123,26 @@ for (let i = 0; i < result_population.length; i++) {
   pop_statNum.textContent = Intl.NumberFormat("en-US").format(
     result_population[i].population
   );
-  pop_statbar.style.display = "inline";
+  pop_statbar.style.display = "flex";
+
   pop_statbar.style.background = `linear-gradient(to right, rgb(255 77 15) ${
     (result_population[i].population * 100) / worldPopulation
   }%,#ffffff ${(result_population[i].population * 100) / worldPopulation}%)`;
+
+  pop_statbar.textContent = `${(
+    (result_population[i].population * 100) /
+    worldPopulation
+  ).toFixed(2)}%`;
 }
 
 /// >>>>>> IDIOMAS
-lang_statName.textContent = "More spoken";
-lang_statNum.textContent = moreSpoken;
-lang_statbar.style.display = "inline";
+lang_statName.textContent = "Countries";
+const totalcountries = countries_data.length;
+lang_statNum.textContent = totalcountries;
+lang_statbar.style.display = "flex";
 lang_statbar.style.background =
   "linear-gradient(to right, rgb(255 77 15) 100%,#ffffff 100%)";
+lang_statbar.textContent = "100%";
 
 for (let j = 0; j < result_language.length; j++) {
   let clone2 = lang_statWrapper.cloneNode(true);
@@ -141,10 +150,30 @@ for (let j = 0; j < result_language.length; j++) {
 
   lang_statName.textContent = result_language[j].language;
   lang_statNum.textContent = result_language[j].count;
-  lang_statbar.style.display = "inline";
+  lang_statbar.style.display = "flex";
+
   lang_statbar.style.background = `linear-gradient(to right, rgb(255 77 15) ${
-    (result_language[j].count * 100) / moreSpoken
-  }%,#ffffff ${(result_language[j].count * 100) / moreSpoken}%)`;
+    (result_language[j].count * 100) / totalcountries
+  }%,#ffffff ${(result_language[j].count * 100) / totalcountries}%)`;
+
+  lang_statbar.textContent = `${
+    (result_language[j].count * 100) / totalcountries
+  }%`;
+}
+
+///Create a function that shows and hides the population/languages stat-graph
+popWrapper.style.display = "none";
+langWrapper.style.display = "none";
+
+function showGraph(x) {
+  if (x == 1) {
+    /* Check what form should be shown */
+    popWrapper.style.display = "flex";
+    langWrapper.style.display = "none";
+  } else if (x == 2) {
+    popWrapper.style.display = "none";
+    langWrapper.style.display = "flex";
+  }
 }
 
 /////////////////////////  EVENT LISTENERS -- BOTONES //////////////////
@@ -152,16 +181,20 @@ for (let j = 0; j < result_language.length; j++) {
 const population_btn = document.querySelector(".population");
 const language_btn = document.querySelector(".languages");
 
-///////////// BOTON POPULATION ////////////////////
+/// BOTON POPULATION
 population_btn.addEventListener("click", function () {
   feedback_span.textContent = "Populated Countries";
   message.style.display = "none";
   feedback_title.style.display = "inline";
+
+  showGraph(1);
 });
 
-//////////// BOTON LANGUAGES ////////////////
+/// BOTON LANGUAGES
 language_btn.addEventListener("click", function () {
   feedback_span.textContent = "Spoken Languages";
   message.style.display = "none";
   feedback_title.style.display = "inline";
+
+  showGraph(2);
 });
