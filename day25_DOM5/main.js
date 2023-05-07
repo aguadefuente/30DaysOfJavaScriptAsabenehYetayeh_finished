@@ -25,6 +25,7 @@ feedback_span.textContent = ""; //el contenido del span se crea al apretar los b
 let worldPopulation = 0;
 countries_data.forEach((elem) => (worldPopulation += elem.population));
 console.log("world population today is :", worldPopulation); //7758589152
+//se podría hacer con REDUCE() HACER!!!
 
 // 2) Getting how many languages are in our object
 const worldLanguages = new Set();
