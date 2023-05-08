@@ -48,8 +48,8 @@ buttons[2].addEventListener("click", function () {
 const textInput = document.querySelector("input");
 
 textInput.addEventListener("input", function () {
-  textInput.value.toUpperCase();
   if (state === 1) {
+    showCountry(this.value);
     console.log("mayuscula", textInput.value.toUpperCase());
   }
   if (state === 2) {
@@ -62,9 +62,9 @@ function showCountry(n) {
   countries.forEach((elem) => {
     const showCountry = document.createElement("p");
     document.body.appendChild(showCountry);
-    if (elem.toUpperCase().startsWith(n)) {
+    if (elem.toUpperCase().startsWith(n.toUpperCase())) {
       showCountry.textContent = elem;
     }
   });
 }
-console.log(showCountry("Z"));
+//console.log(showCountry("z"));
