@@ -87,3 +87,11 @@ input {
     padding: 1rem;
     width: 40rem;
 }
+
+.countries-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 4rem;
+}
