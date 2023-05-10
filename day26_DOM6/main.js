@@ -49,8 +49,9 @@ const country_container = document.querySelector(".countries-section");
 
 //Se crean los elementos
 function create() {
+  let filtered = [];
   country_container.innerHTML = ""; //esto refresca la pantalla al ingresar un nuevo dato en el input
-  let filtered = [...countries]; //hago una copia para no modificar el array original
+  filtered = [...countries]; //hago una copia para no modificar el array original
   let filterText = "";
 
   //antes de crear los elementos me fijo que botón está apretado
@@ -61,14 +62,22 @@ function create() {
     filtered = containtFilter(textInput.value); //llama a la función containFilter() así filtered [] será el array con los elementos que contengan con tal/es letra/as
     filterText = "contianing";
   }
-
   //se fija si el botón de sort es de a-z o de z-a y filtered [] será ordenado ascendente o descendiente
   if (switchOrder === "z-a") {
     filtered.reverse();
   }
 
   //luego de fijarse qué botón está apretado y agregar los elementos en el filtered array - lo recorremos para crear los div de los países
+  message.innerHTML = `Countries ${filterText}: <span>${textInput.value.toUpperCase()}</span> are <span>${
+    filtered.length
+  }</span>`;
   filtered.forEach((elem) => {
+    if (textInput.value.length > 0) {
+      subtitle.insertAdjacentElement("afterend", message);
+    } else {
+      message.innerHTML = "";
+    }
+
     const country_div = document.createElement("div");
     country_div.className = "country_div";
     country_container.appendChild(country_div);
@@ -91,15 +100,6 @@ function create() {
     country_div.style.backgroundSize = "cover"; //Resize the background image to cover the entire container
 
     country_div.textContent = elem.toUpperCase();
-
-    if (textInput.value.length !== 0) {
-      subtitle.insertAdjacentElement("afterend", message);
-      message.innerHTML = `Countries ${filterText}: <span>${textInput.value.toUpperCase()}</span> are <span>${
-        filtered.length
-      }</span>`;
-    } else {
-      message.innerHTML = "";
-    }
   });
 }
 
