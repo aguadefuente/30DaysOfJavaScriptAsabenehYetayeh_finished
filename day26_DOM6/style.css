@@ -95,3 +95,8 @@ input {
     gap: 2rem;
     padding: 4rem;
 }
+
+span {
+    color: yellow;
+    font-weight: bold;
+}
