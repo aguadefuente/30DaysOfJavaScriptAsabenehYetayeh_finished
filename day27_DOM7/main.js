@@ -98,8 +98,7 @@ function desappear() {
   str.style.visibility = "hidden";
 }
 
-randomizeText();
-setInterval(randomizeText, 5000);
+randomizeText(setInterval(randomizeText, 5500));
 
 //setInterval(appear, 1000);
 //setInterval(desappear, 5000);
