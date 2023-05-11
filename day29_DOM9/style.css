@@ -28,27 +28,6 @@ body {
 }
 
 
-/*Animación
-span {
-    animation-name: changeColor;
-    animation-duration: var(--duration);
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(0, 0.01, 1, 0.22);
-
-    
-}*/
-
-/*
-@keyframes changeColor{
-    from {
-       color: var(--color-A);
-    } 
-    to {
-        color:var(--color-B);
-    }
-}
-*/
-
 @keyframes appear {
     0%{
         opacity: 0%;

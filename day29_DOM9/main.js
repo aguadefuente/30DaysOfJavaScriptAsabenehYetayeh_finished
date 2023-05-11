@@ -10,7 +10,6 @@ function span_it(string) {
     .join("");
 }
 str.innerHTML = span_it(str.innerHTML);
-str2.innerHTML = span_it(str.innerHTML);
 
 //random fontSize
 function generateRandomFontSize() {
@@ -42,15 +41,4 @@ function randomizeText() {
   str.style.fontFamily = generateRandomFamily();
 }
 
-function appear() {
-  str.style.visibility = "visible";
-}
-
-function desappear() {
-  str.style.visibility = "hidden";
-}
-
 randomizeText(setInterval(randomizeText, 5500));
-
-//setInterval(appear, 1000);
-//setInterval(desappear, 5000);
