@@ -1,6 +1,6 @@
 const str = document.getElementById("str");
 //document.body.appendChild(str);
-str.innerHTML = "30 Days Of JavaScript: 27 Day - Asabeneh Yetayeh";
+str.innerHTML = asabenehChallenges2020.challengeSubtitle;
 
 //función para <span> cada letra de str
 function span_it(string) {
@@ -20,7 +20,7 @@ function generateRandomFontSize() {
 
 //random Color
 function generateRandomColor() {
-  let colors = ["deeppink", "steelblue", "yellowgreen", "orangered", "purple"];
+  let colors = ["dodgerblue", "firebrick", "yellowgreen", "yellow"];
   let randomColor = colors[Math.floor(Math.random() * colors.length)];
   return randomColor;
 }
@@ -38,7 +38,45 @@ function randomizeText() {
   //each letter
   spans.forEach((span) => (span.style.fontWeight = generateRandomFontSize()));
   spans.forEach((span) => (span.style.color = generateRandomColor()));
-  str.style.fontFamily = generateRandomFamily();
+  spans.forEach((span) => (span.style.fontFamily = generateRandomFamily()));
 }
 
-randomizeText(setInterval(randomizeText, 5500));
+randomizeText();
+setInterval(randomizeText, 5000);
+
+//paragraph:
+const description = document.querySelector("p");
+description.innerHTML = asabenehChallenges2020.author.bio;
+
+const author = document.querySelector("h1");
+author.innerHTML =
+  asabenehChallenges2020.author.firstName +
+  asabenehChallenges2020.author.lastName;
+
+//div animated
+const movediv = document.querySelector("#move");
+
+const movearr = [
+  "Educator",
+  "Programmer",
+  "Developer",
+  "Motivator",
+  "Content Creator",
+];
+
+const timeOut = 5500;
+
+movediv.textContent = "";
+let count = 0;
+function titlemove() {
+  for (let i = 0; i < movearr.length; i++) {
+    count = i;
+    setTimeout(() => {
+      movediv.textContent = movearr[i];
+    }, i * timeOut);
+  }
+}
+
+titlemove();
+
+setInterval(titlemove, timeOut * movearr.length);
