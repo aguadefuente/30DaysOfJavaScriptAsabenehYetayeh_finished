@@ -6,7 +6,7 @@ str.innerHTML = asabenehChallenges2020.challengeSubtitle;
 function span_it(string) {
   return string
     .split("")
-    .map((letter) => "<span>" + letter + "</span>")
+    .map((letter) => "<span class='letter-span'>" + letter + "</span>")
     .join("");
 }
 str.innerHTML = span_it(str.innerHTML);
@@ -34,7 +34,7 @@ function generateRandomFamily() {
 
 //Función que agrega los estilos a cada letra de los spanes
 function randomizeText() {
-  let spans = document.querySelectorAll("span");
+  let spans = document.querySelectorAll("span.letter-span");
   //each letter
   spans.forEach((span) => (span.style.fontWeight = generateRandomFontSize()));
   spans.forEach((span) => (span.style.color = generateRandomColor()));
@@ -80,3 +80,27 @@ function titlemove() {
 titlemove();
 
 setInterval(titlemove, timeOut * movearr.length);
+
+//
+const tecnologies = ["HTML", "CSS", "JAVASCRIPT", "REACT", "NODE"];
+let contador = 0;
+const element = document.getElementById("tecs");
+const iteration = () => {
+  element.innerHTML = tecnologies[parseInt(contador / 2) % tecnologies.length];
+  console.log(tecnologies[parseInt(contador / 2) % tecnologies.length]);
+  if (contador % 2 !== 0) {
+    element.classList.add("out");
+  } else {
+    element.classList.remove("out");
+  }
+  contador++;
+  // if you're affraid the code could run for so long that it could fail,
+  // 6 is enough (number of elems * 2)
+  if (contador === tecnologies.length * 2) {
+    contador = 0;
+  }
+};
+setInterval(iteration, 1500);
+iteration();
+
+//
