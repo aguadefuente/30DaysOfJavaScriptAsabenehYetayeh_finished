@@ -1,0 +1,145 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; 
+}
+
+html {
+    font-size: 62.5%; /* 100% = 16px, 62.5%=10px (100*10/16px = 62.5%) */
+    font-family: 'Montserrat', sans-serif;
+} 
+
+body {
+    box-sizing: border-box; /*defines how the width and height of an element are calculated*/
+    /*min-height: 100vh;*/
+    color: rgb(116 116 116);
+
+    width: 60%;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 4rem auto;
+    align-items: center;
+    text-align: center;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+.container_input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem auto;
+    align-items: center;
+    text-align: center;
+
+    
+}
+
+.container_input-text{
+    flex-basis: auto;
+    width: 15rem;
+    height: 4.5rem;
+    
+    border: 2px solid rgb(225 198 207);
+    outline: none;
+    padding: 1rem;
+
+    font-size: 1.8rem;
+    color: rgb(116 116 116);
+}
+
+.container_input-text:focus {
+    border: 2px solid rgb(229, 175, 193);
+}
+
+.container_input-btn {
+    background-color: rgb(225 198 207);
+    border: none;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    width: 15rem;
+    height: 4.5rem;
+    transition-duration: 0.4s;
+
+    font-size: 1.8rem;
+}
+
+.container_input-btn:hover {
+    background-color: rgb(229, 175, 193);
+    cursor: pointer;
+}
+
+.container_input-btn:active {
+    background-color:rgb(225 198 207);
+    cursor: pointer;
+}
+
+::placeholder {
+    color: rgb(183, 183, 183);
+}
+
+.msg {
+    color: red;
+    font-weight: bold;
+}
+
+.players-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 2rem;
+    background-color: #eadfe3;
+    font-weight: bold;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: right;
+}
+
+.round-btn {
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    padding: 1.5rem;
+    text-decoration: none;
+    aspect-ratio: 1/1;
+    width: 5rem;
+    color: rgb(116 116 116);
+}
+
+.item {
+    flex-grow: 1;
+}
+
+.date {
+    color: rgb(183, 183, 183);
+}
