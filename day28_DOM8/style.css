@@ -1,145 +1,149 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit; 
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  --color1: rgb(67, 67, 67);
+  --color2: rgb(183, 183, 183);
+  --darkpink: rgb(249, 183, 178);
+  --lightpink: rgb(255 222 220);
 }
 
 html {
-    font-size: 62.5%; /* 100% = 16px, 62.5%=10px (100*10/16px = 62.5%) */
-    font-family: 'Montserrat', sans-serif;
-} 
+  font-size: 62.5%; /* 100% = 16px, 62.5%=10px (100*10/16px = 62.5%) */
+  font-family: "Montserrat", sans-serif;
+}
 
 body {
-    box-sizing: border-box; /*defines how the width and height of an element are calculated*/
-    /*min-height: 100vh;*/
-    color: rgb(116 116 116);
+  box-sizing: border-box; /*defines how the width and height of an element are calculated*/
+  /*min-height: 100vh;*/
+  color: var(--color1);
 
-    width: 60%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin: 4rem auto;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 4rem auto;
+  align-items: center;
+  text-align: center;
 }
 
-h1{
-    font-size: 3rem;
+h1 {
+  font-size: 3rem;
 }
 
 .container_input {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin: 2rem auto;
-    align-items: center;
-    text-align: center;
-
-    
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem auto;
+  align-items: center;
+  text-align: center;
 }
 
-.container_input-text{
-    flex-basis: auto;
-    width: 15rem;
-    height: 4.5rem;
-    
-    border: 2px solid rgb(225 198 207);
-    outline: none;
-    padding: 1rem;
+.container_input-text {
+  flex-basis: auto;
+  width: 15rem;
+  height: 4.5rem;
 
-    font-size: 1.8rem;
-    color: rgb(116 116 116);
+  border: 2px solid var(--lightpink);
+  outline: none;
+  padding: 1rem;
+
+  font-size: 1.8rem;
+  color: var(--color1);
 }
 
 .container_input-text:focus {
-    border: 2px solid rgb(229, 175, 193);
+  border: 2px solid var(--darkpink);
 }
 
 .container_input-btn {
-    background-color: rgb(225 198 207);
-    border: none;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+  background-color: var(--lightpink);
+  border: none;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 
-    width: 15rem;
-    height: 4.5rem;
-    transition-duration: 0.4s;
+  width: 15rem;
+  height: 4.5rem;
+  transition-duration: 0.4s;
 
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 .container_input-btn:hover {
-    background-color: rgb(229, 175, 193);
-    cursor: pointer;
+  background-color: var(--darkpink);
+  cursor: pointer;
 }
 
 .container_input-btn:active {
-    background-color:rgb(225 198 207);
-    cursor: pointer;
+  background-color: var(--darkpink);
+  cursor: pointer;
 }
 
 ::placeholder {
-    color: rgb(183, 183, 183);
+  color: var(--color2);
 }
 
 .msg {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
 }
 
 .players-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
 }
 
 .player {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    padding: 2rem;
-    background-color: #eadfe3;
-    font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--lightpink);
+  font-weight: bold;
 }
 
 .player-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-right: 2rem;
 }
 
 .buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: right;
+  display: flex;
+  gap: 2rem;
+  justify-content: right;
 }
 
 .round-btn {
-    background-color: white;
-    border-radius: 50%;
-    border: none;
-    padding: 1.5rem;
-    text-decoration: none;
-    aspect-ratio: 1/1;
-    width: 5rem;
-    color: rgb(116 116 116);
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  padding: 1.5rem;
+  text-decoration: none;
+  aspect-ratio: 1/1;
+  width: 5rem;
+  color: var(--color1);
 }
 
 .item {
-    flex-grow: 1;
+  flex-grow: 1;
+  width: 10rem;
 }
 
 .date {
-    color: rgb(183, 183, 183);
+  color: var(--color2);
 }
