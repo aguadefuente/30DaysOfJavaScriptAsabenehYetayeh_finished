@@ -1,50 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>30 Days of JavaScript Challenge Leaderboard</title>
- <!--GOOGLE FONTS-->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
- <!--CSS-->
-<link rel="stylesheet" href="/day28_DOM8/style.css">
-</head>
-<body>
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--CSS-->
+    <link rel="stylesheet" href="/day28_DOM8/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>30 Days of JavaScript Challenge Leaderboard</h1>
+      <div class="container_input">
+        <input
+          type="text"
+          class="container_input-text firstname_input"
+          placeholder="First Name"
+        />
+        <input
+          type="text"
+          class="container_input-text lastname_input"
+          placeholder="Last Name"
+        />
+        <input
+          type="text"
+          class="container_input-text country_input"
+          placeholder="Country"
+        />
+        <input
+          type="text"
+          class="container_input-text score_input"
+          placeholder="Score"
+        />
+        <button class="container_input-btn">Add Player</button>
+      </div>
+      <p class="msg">All fields are required</p>
+    </header>
 
-<header>
-    <h1>30 Days of JavaScript Challenge Leaderboard</h1>
-    <div class="container_input">
-       <input type="text" class="container_input-text firstname_input" placeholder="First Name">
-       <input type="text" class="container_input-text lastname_input" placeholder="Last Name">
-       <input type="text" class="container_input-text country_input" placeholder="Country">
-       <input type="text" class="container_input-text score_input" placeholder="Score">
-       <button class="container_input-btn">Add Player</button>
-    </div>
-    <p class="msg">All fields are required</p>
-</header>
-
-<main>
-    <div class="players-container">
-
-        <div class="player">
-            <div class="player-info item" >
-              <p class="name"></p>
-              <p class="date"></p>
-            </div>
-
-            <p class="country item"></p>
-            <p class="score item"></p>
-
-            <div class="buttons item">
-                <button class="round-btn">🚮</button>
-                <button class="round-btn">+5</button>
-                <button class="round-btn">-5</button>
-            </div>
+    <main>
+      <div class="players_inner-container">
+        <div class="player-info item">
+          <p class="name"></p>
+          <p class="date"></p>
         </div>
 
+        <p class="country item"></p>
+        <p class="score item"></p>
+
+        <div class="buttons item">
+          <button class="round-btn">🚮</button>
+          <button class="round-btn">+5</button>
+          <button class="round-btn">-5</button>
+        </div>
+      </div>
+      <div class="players_outer-container">
         <!--
         <div class="player">
             <div class="player-info item" >
@@ -62,11 +78,9 @@
             </div>
         </div>
     -->
-    </div>
-</main>
+      </div>
+    </main>
 
-
-<script src="/day28_DOM8/main.js"></script>
-
-</body>
+    <script src="/day28_DOM8/main.js"></script>
+  </body>
 </html>
