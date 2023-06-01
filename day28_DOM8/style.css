@@ -40,6 +40,7 @@ h1 {
 .container_input {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   margin: 2rem auto;
   align-items: center;
@@ -98,14 +99,14 @@ h1 {
   font-weight: bold;
 }
 
-.players-container {
+.players_outer-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
 }
 
-.player {
+.players_inner-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -119,7 +120,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-right: 2rem;
+  margin-right: 4rem;
 }
 
 .buttons {

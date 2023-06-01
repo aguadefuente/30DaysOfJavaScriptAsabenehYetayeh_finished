@@ -52,7 +52,7 @@ const triangle = {
   altura: 8.66,
   "triangle-name": "equilatero",
   getArea: function () {
-    //a function is an object methos
+    //a function is an object method
     return Math.pow(this.base * this.altura, 2); //this refers to the object itself
   },
 };
