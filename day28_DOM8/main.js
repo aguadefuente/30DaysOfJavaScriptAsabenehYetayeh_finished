@@ -162,32 +162,31 @@ function render() {
 }
 
 //para checkear inputs
+//1 - que esté en foco
 function inputFocus() {
   firstname_input.focus();
 }
+//2 - que se llenen sus campos
+const inputarray = [...all_inputs]; //paso el nodeList a array para poder usar otros métodos como .some() y no solo forloop
+//console.log(inputarray);
 
-const inputarray = [...all_inputs];
-console.log(inputarray);
-console.log(inputarray[1].value);
-
-//BOTONES
-add_btn.addEventListener("click", function () {
-  inputFocus();
-
+function Emptyvalidation() {
   const algunovacio = inputarray.some((elem) => elem.value.length === 0);
-
-  function Emptyvalidation() {
-    if (algunovacio) {
-      console.log("si");
-      msg.style.display = "block";
-    } else {
-      console.log("no");
-      msg.style.display = "none";
-      addPlayer();
-      render();
-      console.log("players", players);
-    }
+  if (algunovacio) {
+    //console.log("si");
+    msg.style.display = "block"; //aparece el cartel rojo
+  } else {
+    //console.log("no");
+    msg.style.display = "none"; //desaparece el cartel rojo y se crea el elemento con el jugador
+    addPlayer();
+    render();
+    console.log("players", players);
   }
+}
+
+//BOTON
+add_btn.addEventListener("click", function () {
+  inputFocus(); //para que el cursor siempre esté en el primer input
   Emptyvalidation();
 });
 
