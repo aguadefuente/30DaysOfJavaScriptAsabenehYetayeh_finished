@@ -12,11 +12,12 @@ let players = [
 //////////////////////
 //INPUTS
 const add_btn = document.querySelector(".container_input-btn");
-let fistname_input = document.querySelector(".firstname_input");
+let all_inputs = document.querySelectorAll(".container_input-text");
+console.log("input", all_inputs);
+let firstname_input = document.querySelector(".firstname_input");
 let lastname_input = document.querySelector(".lastname_input");
 let country_input = document.querySelector(".country_input");
 let score_input = document.querySelector(".score_input");
-let all_inputs = document.getElementsByTagName("input");
 
 function clearInput() {
   let elements = document.getElementsByTagName("input");
@@ -28,7 +29,7 @@ function clearInput() {
 //agrega jugadores y los ordena de mayor a menor
 function addPlayer() {
   players.push({
-    firstName: fistname_input.value,
+    firstName: firstname_input.value,
     lastName: lastname_input.value,
     country: country_input.value,
     score: Number.parseInt(score_input.value),
@@ -160,11 +161,34 @@ function render() {
   }
 }
 
+//para checkear inputs
+function inputFocus() {
+  firstname_input.focus();
+}
+
+const inputarray = [...all_inputs];
+console.log(inputarray);
+console.log(inputarray[1].value);
+
 //BOTONES
 add_btn.addEventListener("click", function () {
-  addPlayer();
-  render();
-  console.log("players", players);
+  inputFocus();
+
+  const algunovacio = inputarray.some((elem) => elem.value.length === 0);
+
+  function Emptyvalidation() {
+    if (algunovacio) {
+      console.log("si");
+      msg.style.display = "block";
+    } else {
+      console.log("no");
+      msg.style.display = "none";
+      addPlayer();
+      render();
+      console.log("players", players);
+    }
+  }
+  Emptyvalidation();
 });
 
 ////////////////////////// REPASANDO COSAS //////////////////
@@ -179,30 +203,4 @@ let p2 = {
 };
 - using  Object.assign() method
 let p3 = Object.assign({}, person); 
-
-
-//haciendo pruebas con findIndexOf() y splice()
-const testObj = [
-  {
-    firstName: "Samantha",
-    lastName: "Lewis",
-  },
-  {
-    firstName: "Sara",
-    lastName: "Lewis",
-  },
-  {
-    firstName: "Santiago",
-    lastName: "Lewis",
-  },
-];
-
-console.log(testObj);
-
-const indexOfObject = testObj.findIndex((object) => {
-  return object.firstName === "Sara";
-});
-console.log(indexOfObject);
-testObj.splice(indexOfObject, 1);
-console.log(testObj);
 */
