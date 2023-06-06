@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validating Form</title>
+    <link rel="stylesheet" href="/day30_DOM10/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <form id="signup" class="form">
+        <h1>Validating Web Form</h1>
+        <div class="form-field">
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username" autocomplete="off" />
+          <small></small>
+          <!--small tag is to show the error message to the users. Represents side-comments and small print, like copyright and legal text (se podría hacer lo mismo con css y ponerle al p tag un fontsize mas chico)-->
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email:</label>
+          <input type="text" name="email" id="email" autocomplete="off" />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            autocomplete="off"
+          />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+            autocomplete="off"
+          />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <input class="btn" if="signup" type="submit" value="Sign Up" />
+        </div>
+      </form>
+    </div>
+
+    <script src="/day30_DOM10/main.js"></script>
+  </body>
+</html>
