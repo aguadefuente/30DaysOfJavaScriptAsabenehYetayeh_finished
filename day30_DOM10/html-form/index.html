@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validating Form</title>
+    <link rel="stylesheet" href="/day30_DOM10/html-form/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <form id="signup" class="form">
+        <h1>Validating Web Form - only html5</h1>
+
+        <div class="form-field">
+          <!--label "for" and input "name" tienen que ser iguales-->
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            autocomplete="off"
+            title="Username must be alphanumeric and contain 3-16 characters"
+            pattern="[A-Za-z0-9]{3,16}"
+            required
+          />
+          <!--autocomplete en off para que no muestre opciones-->
+          <!--title es para que muestre un cartelito en mouse over el input-->
+          <!--required hace que no se envie el formulario si el campo quedó vacío, muestra un cartel avisando de llenar el campo-->
+          <!--minlength = "3", maxlength = "16" determinan el mínimo y máximo de caracteres a ingresar -->
+          <!--pattern donde utilizamos una regEx que sólo acepta alphanúmeros y {entre 3 y 16 caracters} - en vez de usar minlegth-maxlength-->
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            autocomplete="off"
+            title="Email must be a valid email adress e.g example@example.com"
+            placeholder="example@example.com, example@example.com"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+            multiple
+            required
+          />
+          <small>Puedes ingresar más de un email separados con comas</small>
+
+          <!--como uso email type no necesito especificar un pattern. Ya me lo genera html-->
+          <!--usamos el pattern por si el browser no soporta html5-->
+          <!--multiple attribute permite ingresar más de un mail-->
+          <!--https://www.w3resource.com/javascript/form/email-validation.php#:~:text=To%20get%20a%20valid%20email,%5D%2B)*%24%2F.-->
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            autocomplete="off"
+            title="between 6 to 20 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character."
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,20}$"
+            required
+          />
+          <!--https://www.w3resource.com/javascript/form/password-validation.php-->
+        </div>
+
+        <div class="form-field">
+          <label for="telephone">Telephone:</label>
+          <input
+            type="tel"
+            name="telephone"
+            id="telephone"
+            autocomplete="off"
+            title="A valid telephone number (e.g. 11 digit 333-333-3334)"
+            pattern="^\d{11}$"
+            required
+          />
+          <!--https://www.w3resource.com/javascript/form/phone-no-validation.php-->
+        </div>
+
+        <div class="form-field">
+          <label for="textarea">Your Bio:</label>
+          <textarea
+            name="textarea"
+            id="textarea"
+            cols="45"
+            rows="10"
+            minlength="8"
+            maxlength="50"
+            title="Only must contain lowercase letters, underscores, hyphens and be 8-50 characters"
+          ></textarea>
+        </div>
+
+        <div class="form-field">
+          <input class="btn" if="signup" type="submit" value="Sign Up" />
+        </div>
+      </form>
+    </div>
+
+    <script src="/day30_DOM10/html-form/main.js"></script>
+  </body>
+</html>
