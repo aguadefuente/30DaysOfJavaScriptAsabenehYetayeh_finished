@@ -53,7 +53,8 @@ body {
   margin-bottom: 5px;
 }
 
-.form-field input {
+.form-field input,
+.form-field textarea {
   border: solid 2px #f0f0f0;
   border-radius: 3px;
   padding: 10px;
@@ -63,15 +64,18 @@ body {
   width: 100%;
 }
 
-.form-field input:focus {
+.form-field input:focus,
+.form-field textarea:focus {
   outline: none;
 }
 
-.form-field.error input {
+.form-field.error input,
+.form-field.error textarea {
   border-color: var(--error-color);
 }
 
-.form-field.success input {
+.form-field.success input,
+.form-field.success textarea {
   border-color: var(--success-color);
 }
 

@@ -23,6 +23,7 @@
             autocomplete="off"
             title="Username must be alphanumeric and contain 3-16 characters"
             pattern="[A-Za-z0-9]{3,16}"
+            autofocus
             required
           />
           <!--autocomplete en off para que no muestre opciones-->
@@ -91,7 +92,10 @@
             minlength="8"
             maxlength="50"
             title="Only must contain lowercase letters, underscores, hyphens and be 8-50 characters"
+            required
+            style="resize: none"
           ></textarea>
+          <!--textarea no tienen pattern attribute - no funciona pattern="[a-z_-]/g"-->
         </div>
 
         <div class="form-field">
