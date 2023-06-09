@@ -64,19 +64,16 @@ body {
   width: 100%;
 }
 
-.form-field input:focus,
-.form-field textarea:focus {
+.form-field input:focus:invalid,
+.form-field textarea:focus:invalid {
+  border-color: var(--error-color);
   outline: none;
 }
 
-.form-field.error input,
-.form-field.error textarea {
-  border-color: var(--error-color);
-}
-
-.form-field.success input,
-.form-field.success textarea {
+.form-field input:required:valid,
+.form-field textarea:valid {
   border-color: var(--success-color);
+  outline: none;
 }
 
 .form-field small {
